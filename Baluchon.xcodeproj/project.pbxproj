@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08793AFB29DBFE500024A431 /* Nexa-XBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AF829DBFE500024A431 /* Nexa-XBold.ttf */; };
+		08793AFC29DBFE500024A431 /* Nexa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AF929DBFE500024A431 /* Nexa-Bold.ttf */; };
+		08793B0029DC0A520024A431 /* Nexa-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AFF29DC0A520024A431 /* Nexa-Regular.otf */; };
 		087E32CB29DB22A1008ABE98 /* BaluchonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */; };
 		087E32CD29DB22A1008ABE98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E32CC29DB22A1008ABE98 /* ContentView.swift */; };
 		087E32CF29DB22A5008ABE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 087E32CE29DB22A5008ABE98 /* Assets.xcassets */; };
@@ -35,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08793AF829DBFE500024A431 /* Nexa-XBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-XBold.ttf"; path = "../../../../../../../../Library/Fonts/Nexa-XBold.ttf"; sourceTree = "<group>"; };
+		08793AF929DBFE500024A431 /* Nexa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Bold.ttf"; path = "../../../../../../../../Library/Fonts/Nexa-Bold.ttf"; sourceTree = "<group>"; };
+		08793AFE29DBFECC0024A431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		08793AFF29DC0A520024A431 /* Nexa-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Regular.otf"; path = "../../../../../../../../Library/Fonts/Nexa-Regular.otf"; sourceTree = "<group>"; };
 		087E32C729DB22A0008ABE98 /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaluchonApp.swift; sourceTree = "<group>"; };
 		087E32CC29DB22A1008ABE98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +80,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08793AEE29DBFCD60024A431 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				08793AFF29DC0A520024A431 /* Nexa-Regular.otf */,
+				08793AF929DBFE500024A431 /* Nexa-Bold.ttf */,
+				08793AF829DBFE500024A431 /* Nexa-XBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		087E32BE29DB22A0008ABE98 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +113,8 @@
 		087E32C929DB22A0008ABE98 /* Baluchon */ = {
 			isa = PBXGroup;
 			children = (
+				08793AFE29DBFECC0024A431 /* Info.plist */,
+				08793AEE29DBFCD60024A431 /* Fonts */,
 				087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */,
 				087E32CC29DB22A1008ABE98 /* ContentView.swift */,
 				087E32F429DB34E6008ABE98 /* Style.swift */,
@@ -234,8 +253,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08793AFB29DBFE500024A431 /* Nexa-XBold.ttf in Resources */,
 				087E32D229DB22A5008ABE98 /* Preview Assets.xcassets in Resources */,
 				087E32CF29DB22A5008ABE98 /* Assets.xcassets in Resources */,
+				08793AFC29DBFE500024A431 /* Nexa-Bold.ttf in Resources */,
+				08793B0029DC0A520024A431 /* Nexa-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,11 +446,11 @@
 				DEVELOPMENT_TEAM = MC9L8ULM7A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Baluchon/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,11 +475,11 @@
 				DEVELOPMENT_TEAM = MC9L8ULM7A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Baluchon/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

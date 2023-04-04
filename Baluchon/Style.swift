@@ -31,4 +31,88 @@ extension Color {
     
 }
 
+extension Font {
+    
+    // Font Declaration
+    
+    static func fontNexaRegular(_ size: CGFloat) -> Font {
+        return Font.custom("Nexa-Regular", size: size)
+    }
+        
+    static func fontNexaBold(_ size: CGFloat) -> Font {
+        return Font.custom("Nexa-Bold", size: size)
+    }
+    
+    static func fontNexaXBold(_ size: CGFloat) -> Font {
+        return Font.custom("Nexa-XBold", size: size)
+    }
+    
+    // Default Fonts
+    
+    static var defaultTertiaryText: Font {
+        return fontNexaRegular(13)
+    }
+    
+    static var defaultSecondaryText: Font {
+        return fontNexaRegular(15)
+    }
+    
+    static var defaultBody: Font {
+        return fontNexaRegular(16)
+    }
+    
+    static var defaultButtonCaption: Font {
+        return fontNexaRegular(18)
+    }
+    
+    static var defaultChangeAmount: Font {
+        return fontNexaRegular(28)
+    }
+    
+    static var defaultTitle2: Font {
+        return fontNexaXBold(20)
+    }
+    
+    static var defaultTitle1: Font {
+        return fontNexaBold(32)
+    }
+    
+    // Widgets Fonts
+    
+    static var widgetsHourlyHours: Font {
+        return fontNexaXBold(13)
+    }
+    
+    static var widgetsHourlyDegree: Font {
+        return fontNexaXBold(28)
+    }
+    
+    static var widgetsWeeklyHours: Font {
+        return fontNexaXBold(13)
+    }
+    
+    static var widgetsWeeklyMinDegree: Font {
+        return fontNexaXBold(30)
+    }
+    
+    static var widgetsWeeklyMaxDegree: Font {
+        return fontNexaXBold(40)
+    }
+    
+    static var widgetsDailyHours: Font {
+        return fontNexaXBold(13)
+    }
+    
+    static var widgetsDailyDate: Font {
+        return fontNexaXBold(15)
+    }
+    
+    static var widgetsDailyDegree: Font {
+        return fontNexaXBold(60)
+    }
+    
+    
+    
+}
+
 
