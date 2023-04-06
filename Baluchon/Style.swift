@@ -11,18 +11,18 @@ import SwiftUI
 extension Color {
     init(hex: UInt, alpha: Double = 1) {
         self.init(
-            .sRGB,
+            .sRGB	,
             red: Double((hex >> 16) & 0xff) / 255,
             green: Double((hex >> 08) & 0xff) / 255,
             blue: Double((hex >> 00) & 0xff) / 255,
             opacity: alpha
         )
     }
-    public static let background = Color(hex: 0xFAFAFA)
-    public static let primary = Color(hex: 0xC0C02C)
-    public static let secondary = Color(hex: 0xF2E3D1)
-    public static let title = Color(hex: 0x000000)
-    public static let icon = Color(hex: 0xFFFFFF, alpha: 0.3)
+    public static let backgroundLight = Color(hex: 0xFAFAFA)
+    public static let primaryLight = Color(hex: 0xC0602C)
+    public static let secondaryLight = Color(hex: 0xF2E3D1)
+    public static let titleLight = Color(hex: 0x000000)
+    public static let iconLight = Color(hex: 0x000000, alpha: 0.3)
     public static let separation = Color(hex: 0x000000, alpha: 0.1)
     public static let toggle = Color(hex: 0xD9D9D9)
     
@@ -35,80 +35,80 @@ extension Font {
     
     // Font Declaration
     
-    static func fontNexaRegular(_ size: CGFloat) -> Font {
+    static func fontRegular(_ size: CGFloat) -> Font {
         return Font.custom("Nexa-Regular", size: size)
     }
         
-    static func fontNexaBold(_ size: CGFloat) -> Font {
+    static func fontBold(_ size: CGFloat) -> Font {
         return Font.custom("Nexa-Bold", size: size)
     }
     
-    static func fontNexaXBold(_ size: CGFloat) -> Font {
+    static func fontXBold(_ size: CGFloat) -> Font {
         return Font.custom("Nexa-XBold", size: size)
     }
     
     // Default Fonts
     
     static var defaultTertiaryText: Font {
-        return fontNexaRegular(13)
+        return fontRegular(13)
     }
     
     static var defaultSecondaryText: Font {
-        return fontNexaRegular(15)
+        return fontRegular(15)
     }
     
     static var defaultBody: Font {
-        return fontNexaRegular(16)
+        return fontRegular(16)
     }
     
     static var defaultButtonCaption: Font {
-        return fontNexaRegular(18)
+        return fontRegular(18)
     }
     
     static var defaultChangeAmount: Font {
-        return fontNexaRegular(28)
+        return fontRegular(28)
     }
     
     static var defaultTitle2: Font {
-        return fontNexaXBold(20)
+        return fontXBold(20)
     }
     
     static var defaultTitle1: Font {
-        return fontNexaBold(32)
+        return fontBold(32)
     }
     
     // Widgets Fonts
     
     static var widgetsHourlyHours: Font {
-        return fontNexaXBold(13)
+        return fontXBold(13)
     }
     
     static var widgetsHourlyDegree: Font {
-        return fontNexaXBold(28)
+        return fontXBold(28)
     }
     
     static var widgetsWeeklyHours: Font {
-        return fontNexaXBold(13)
+        return fontXBold(13)
     }
     
     static var widgetsWeeklyMinDegree: Font {
-        return fontNexaXBold(30)
+        return fontXBold(30)
     }
     
     static var widgetsWeeklyMaxDegree: Font {
-        return fontNexaXBold(40)
+        return fontXBold(40)
     }
     
     static var widgetsDailyHours: Font {
-        return fontNexaXBold(13)
+        return fontXBold(13)
     }
     
     static var widgetsDailyDate: Font {
-        return fontNexaXBold(15)
+        return fontXBold(15)
     }
     
     static var widgetsDailyDegree: Font {
-        return fontNexaXBold(60)
+        return fontXBold(60)
     }
     
     
