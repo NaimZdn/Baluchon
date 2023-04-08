@@ -1,5 +1,5 @@
 //
-//  Components.swift
+//  TranslationButton.swift
 //  Baluchon
 //
 //  Created by Zidouni on 06/04/2023.
