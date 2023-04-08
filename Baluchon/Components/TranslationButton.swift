@@ -20,8 +20,6 @@ struct TranslationButton: View {
                 .font(.defaultSecondaryText)
                 .foregroundColor(.black)
                 .baselineOffset(-7)
-            
-            
         }
         
         .frame(minWidth: 120, maxHeight: 24, alignment: .leading)
@@ -33,11 +31,10 @@ struct TranslationButton: View {
                 cornerRadius: 15,
                 style: .continuous))
         
-        
     }
 }
 
-struct Components_Previews: PreviewProvider {
+struct TranslationButton_Previews: PreviewProvider {
     static var previews: some View {
         TranslationButton()
     }
