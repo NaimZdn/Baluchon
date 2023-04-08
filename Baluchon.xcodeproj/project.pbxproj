@@ -11,7 +11,7 @@
 		08793AFC29DBFE500024A431 /* Nexa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AF929DBFE500024A431 /* Nexa-Bold.ttf */; };
 		08793B0029DC0A520024A431 /* Nexa-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AFF29DC0A520024A431 /* Nexa-Regular.otf */; };
 		087E32CB29DB22A1008ABE98 /* BaluchonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */; };
-		087E32CD29DB22A1008ABE98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E32CC29DB22A1008ABE98 /* ContentView.swift */; };
+		087E32CD29DB22A1008ABE98 /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E32CC29DB22A1008ABE98 /* TranslationView.swift */; };
 		087E32CF29DB22A5008ABE98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 087E32CE29DB22A5008ABE98 /* Assets.xcassets */; };
 		087E32D229DB22A5008ABE98 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 087E32D129DB22A5008ABE98 /* Preview Assets.xcassets */; };
 		087E32DC29DB22A6008ABE98 /* BaluchonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E32DB29DB22A6008ABE98 /* BaluchonTests.swift */; };
@@ -46,7 +46,7 @@
 		08793AFF29DC0A520024A431 /* Nexa-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Regular.otf"; path = "../../../../../../../../Library/Fonts/Nexa-Regular.otf"; sourceTree = "<group>"; };
 		087E32C729DB22A0008ABE98 /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaluchonApp.swift; sourceTree = "<group>"; };
-		087E32CC29DB22A1008ABE98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		087E32CC29DB22A1008ABE98 /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		087E32CE29DB22A5008ABE98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		087E32D129DB22A5008ABE98 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		087E32D729DB22A6008ABE98 /* BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaluchonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +120,7 @@
 				08793AFE29DBFECC0024A431 /* Info.plist */,
 				08793AEE29DBFCD60024A431 /* Fonts */,
 				087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */,
-				087E32CC29DB22A1008ABE98 /* ContentView.swift */,
+				087E32CC29DB22A1008ABE98 /* TranslationView.swift */,
 				087E32F429DB34E6008ABE98 /* Style.swift */,
 				0890319229E1794E000EF722 /* Components */,
 				087E32CE29DB22A5008ABE98 /* Assets.xcassets */,
@@ -296,7 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				087E32CD29DB22A1008ABE98 /* ContentView.swift in Sources */,
+				087E32CD29DB22A1008ABE98 /* TranslationView.swift in Sources */,
 				087F1A4F29DF2067007BF770 /* TranslationButton.swift in Sources */,
 				087E32F529DB34E6008ABE98 /* Style.swift in Sources */,
 				0890319429E1796B000EF722 /* TranslationTextField.swift in Sources */,
