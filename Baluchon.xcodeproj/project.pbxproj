@@ -19,6 +19,7 @@
 		087E32E829DB22A6008ABE98 /* BaluchonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E32E729DB22A6008ABE98 /* BaluchonUITestsLaunchTests.swift */; };
 		087E32F529DB34E6008ABE98 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E32F429DB34E6008ABE98 /* Style.swift */; };
 		087F1A4F29DF2067007BF770 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087F1A4E29DF2067007BF770 /* Components.swift */; };
+		0890319429E1796B000EF722 /* TranslationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0890319329E1796B000EF722 /* TranslationTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		087E32E729DB22A6008ABE98 /* BaluchonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaluchonUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		087E32F429DB34E6008ABE98 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		087F1A4E29DF2067007BF770 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		0890319329E1796B000EF722 /* TranslationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +122,7 @@
 				087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */,
 				087E32CC29DB22A1008ABE98 /* ContentView.swift */,
 				087E32F429DB34E6008ABE98 /* Style.swift */,
-				087F1A4E29DF2067007BF770 /* Components.swift */,
+				0890319229E1794E000EF722 /* Components */,
 				087E32CE29DB22A5008ABE98 /* Assets.xcassets */,
 				087E32D029DB22A5008ABE98 /* Preview Content */,
 			);
@@ -150,6 +152,15 @@
 				087E32E729DB22A6008ABE98 /* BaluchonUITestsLaunchTests.swift */,
 			);
 			path = BaluchonUITests;
+			sourceTree = "<group>";
+		};
+		0890319229E1794E000EF722 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				087F1A4E29DF2067007BF770 /* Components.swift */,
+				0890319329E1796B000EF722 /* TranslationTextField.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +299,7 @@
 				087E32CD29DB22A1008ABE98 /* ContentView.swift in Sources */,
 				087F1A4F29DF2067007BF770 /* Components.swift in Sources */,
 				087E32F529DB34E6008ABE98 /* Style.swift in Sources */,
+				0890319429E1796B000EF722 /* TranslationTextField.swift in Sources */,
 				087E32CB29DB22A1008ABE98 /* BaluchonApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
