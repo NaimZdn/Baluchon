@@ -48,10 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08793AF829DBFE500024A431 /* Nexa-XBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-XBold.ttf"; path = "../../../../../../../../Library/Fonts/Nexa-XBold.ttf"; sourceTree = "<group>"; };
-		08793AF929DBFE500024A431 /* Nexa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Bold.ttf"; path = "../../../../../../../../Library/Fonts/Nexa-Bold.ttf"; sourceTree = "<group>"; };
+		08793AF829DBFE500024A431 /* Nexa-XBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-XBold.ttf"; path = "../../../../../../../../../Library/Fonts/Nexa-XBold.ttf"; sourceTree = "<group>"; };
+		08793AF929DBFE500024A431 /* Nexa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Bold.ttf"; path = "../../../../../../../../../Library/Fonts/Nexa-Bold.ttf"; sourceTree = "<group>"; };
 		08793AFE29DBFECC0024A431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		08793AFF29DC0A520024A431 /* Nexa-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Regular.otf"; path = "../../../../../../../../Library/Fonts/Nexa-Regular.otf"; sourceTree = "<group>"; };
+		08793AFF29DC0A520024A431 /* Nexa-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Regular.otf"; path = "../../../../../../../../../Library/Fonts/Nexa-Regular.otf"; sourceTree = "<group>"; };
 		087E32C729DB22A0008ABE98 /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaluchonApp.swift; sourceTree = "<group>"; };
 		087E32CC29DB22A1008ABE98 /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
@@ -133,16 +133,9 @@
 		087E32C929DB22A0008ABE98 /* Baluchon */ = {
 			isa = PBXGroup;
 			children = (
-				08793AFE29DBFECC0024A431 /* Info.plist */,
-				08793AEE29DBFCD60024A431 /* Fonts */,
-				087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */,
-				087E32CC29DB22A1008ABE98 /* TranslationView.swift */,
-				089248FE29E525320025DB33 /* ConverterView.swift */,
-				0892490829E546440025DB33 /* WeatherView.swift */,
-				087E32F429DB34E6008ABE98 /* Style.swift */,
-				0890319229E1794E000EF722 /* Components */,
-				087E32CE29DB22A5008ABE98 /* Assets.xcassets */,
-				087E32D029DB22A5008ABE98 /* Preview Content */,
+				08AD087A29ED0BAE006624FF /* Application */,
+				08AD087E29ED0BE5006624FF /* Presentation */,
+				08AD087D29ED0BD0006624FF /* Extensions */,
 			);
 			path = Baluchon;
 			sourceTree = "<group>";
@@ -172,19 +165,114 @@
 			path = BaluchonUITests;
 			sourceTree = "<group>";
 		};
-		0890319229E1794E000EF722 /* Components */ = {
+		08AD087A29ED0BAE006624FF /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				0892490029E531730025DB33 /* CurrencyButton.swift */,
+				087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */,
+				08793AFE29DBFECC0024A431 /* Info.plist */,
+				087E32CE29DB22A5008ABE98 /* Assets.xcassets */,
+				08793AEE29DBFCD60024A431 /* Fonts */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		08AD087D29ED0BD0006624FF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				087E32F429DB34E6008ABE98 /* Style.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		08AD087E29ED0BE5006624FF /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				08AD087F29ED0CB3006624FF /* Converter */,
+				08AD088029ED0CC7006624FF /* Translation */,
+				08AD088129ED0CD1006624FF /* Weather */,
+				087E32D029DB22A5008ABE98 /* Preview Content */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		08AD087F29ED0CB3006624FF /* Converter */ = {
+			isa = PBXGroup;
+			children = (
+				08AD088229ED0CFC006624FF /* View */,
+				08AD088729ED0D1B006624FF /* Component */,
+			);
+			path = Converter;
+			sourceTree = "<group>";
+		};
+		08AD088029ED0CC7006624FF /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				08AD088329ED0D03006624FF /* View */,
+				08AD088629ED0D16006624FF /* Component */,
+			);
+			path = Translation;
+			sourceTree = "<group>";
+		};
+		08AD088129ED0CD1006624FF /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				08AD088429ED0D0A006624FF /* View */,
+				08AD088529ED0D0F006624FF /* Component */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		08AD088229ED0CFC006624FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				089248FE29E525320025DB33 /* ConverterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		08AD088329ED0D03006624FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				087E32CC29DB22A1008ABE98 /* TranslationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		08AD088429ED0D0A006624FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0892490829E546440025DB33 /* WeatherView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		08AD088529ED0D0F006624FF /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				088CD11A29E591140007A742 /* WidgetDaily.swift */,
 				088CD11C29E5916C0007A742 /* WidgetHourly.swift */,
 				088CD11E29E591B50007A742 /* WidgetWeekly.swift */,
-				088CD11A29E591140007A742 /* WidgetDaily.swift */,
-				0892490229E5325C0025DB33 /* CurrencyInput.swift */,
-				0892490429E53C110025DB33 /* ChartsButton.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		08AD088629ED0D16006624FF /* Component */ = {
+			isa = PBXGroup;
+			children = (
 				087F1A4E29DF2067007BF770 /* TranslationButton.swift */,
 				0890319329E1796B000EF722 /* TranslationTextField.swift */,
 			);
-			path = Components;
+			path = Component;
+			sourceTree = "<group>";
+		};
+		08AD088729ED0D1B006624FF /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				0892490029E531730025DB33 /* CurrencyButton.swift */,
+				0892490229E5325C0025DB33 /* CurrencyInput.swift */,
+				0892490429E53C110025DB33 /* ChartsButton.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,11 +578,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Baluchon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Baluchon/Presentation/Preview Content\"";
 				DEVELOPMENT_TEAM = MC9L8ULM7A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Baluchon/Info.plist;
+				INFOPLIST_FILE = Baluchon/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -519,11 +607,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Baluchon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Baluchon/Presentation/Preview Content\"";
 				DEVELOPMENT_TEAM = MC9L8ULM7A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Baluchon/Info.plist;
+				INFOPLIST_FILE = Baluchon/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
