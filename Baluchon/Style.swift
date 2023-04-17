@@ -23,10 +23,12 @@ extension Color {
     public static let secondaryLight = Color(hex: 0xF2E3D1)
     public static let titleLight = Color(hex: 0x000000)
     public static let iconLight = Color(hex: 0x000000, alpha: 0.3)
+    public static let placeholderLight = Color(hex: 0x000000, alpha: 0.5)
     public static let separation = Color(hex: 0x000000, alpha: 0.1)
     public static let toggle = Color(hex: 0xD9D9D9)
+    public static let widgetTextLight = Color(hex: 0x000000, alpha: 0.7)
     
-    public static let gradientLight = LinearGradient(colors: [Color(hex: 0xF2E3D1), Color(hex: 0xEBD0B9)], startPoint: .bottomLeading, endPoint: .topTrailing)
+    public static let gradientLight = LinearGradient(colors: [Color(hex: 0xEBD0B9), Color(hex: 0xF2E3D1)], startPoint: .bottomLeading, endPoint: .topTrailing)
     public static let gradientDark = LinearGradient(colors: [Color(hex: 0x2E335A), Color(hex: 0x1C1B33)], startPoint: .topLeading, endPoint: .bottomTrailing)
     
 }
@@ -54,7 +56,7 @@ extension Font {
     }
     
     static var defaultSecondaryText: Font {
-        return fontRegular(15)
+        return fontBold(15)
     }
     
     static var defaultBody: Font {
@@ -71,6 +73,10 @@ extension Font {
     
     static var defaultTitle2: Font {
         return fontXBold(20)
+    }
+    
+    static var defaultMoney: Font {
+        return fontBold(24)
     }
     
     static var defaultTitle1: Font {
