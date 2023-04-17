@@ -64,8 +64,8 @@ struct ConverterView: View {
                 }
             }
             .padding()
-            
         }
+        .background(Color.backgroundLight)
     }
     
     func createChartsButton(date: String) -> ChartsButton {
