@@ -48,10 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08793AF829DBFE500024A431 /* Nexa-XBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-XBold.ttf"; path = "../../../../../../../../../Library/Fonts/Nexa-XBold.ttf"; sourceTree = "<group>"; };
-		08793AF929DBFE500024A431 /* Nexa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Bold.ttf"; path = "../../../../../../../../../Library/Fonts/Nexa-Bold.ttf"; sourceTree = "<group>"; };
+		08793AF829DBFE500024A431 /* Nexa-XBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-XBold.ttf"; path = "../../../../../../../../../../Library/Fonts/Nexa-XBold.ttf"; sourceTree = "<group>"; };
+		08793AF929DBFE500024A431 /* Nexa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Bold.ttf"; path = "../../../../../../../../../../Library/Fonts/Nexa-Bold.ttf"; sourceTree = "<group>"; };
 		08793AFE29DBFECC0024A431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		08793AFF29DC0A520024A431 /* Nexa-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Regular.otf"; path = "../../../../../../../../../Library/Fonts/Nexa-Regular.otf"; sourceTree = "<group>"; };
+		08793AFF29DC0A520024A431 /* Nexa-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Regular.otf"; path = "../../../../../../../../../../Library/Fonts/Nexa-Regular.otf"; sourceTree = "<group>"; };
 		087E32C729DB22A0008ABE98 /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaluchonApp.swift; sourceTree = "<group>"; };
 		087E32CC29DB22A1008ABE98 /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
@@ -168,10 +168,9 @@
 		08AD087A29ED0BAE006624FF /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				08AD088829ED115D006624FF /* Assets  */,
 				087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */,
 				08793AFE29DBFECC0024A431 /* Info.plist */,
-				087E32CE29DB22A5008ABE98 /* Assets.xcassets */,
-				08793AEE29DBFCD60024A431 /* Fonts */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -273,6 +272,15 @@
 				0892490429E53C110025DB33 /* ChartsButton.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		08AD088829ED115D006624FF /* Assets  */ = {
+			isa = PBXGroup;
+			children = (
+				08793AEE29DBFCD60024A431 /* Fonts */,
+				087E32CE29DB22A5008ABE98 /* Assets.xcassets */,
+			);
+			path = "Assets ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
