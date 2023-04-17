@@ -19,7 +19,15 @@
 		087E32E829DB22A6008ABE98 /* BaluchonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E32E729DB22A6008ABE98 /* BaluchonUITestsLaunchTests.swift */; };
 		087E32F529DB34E6008ABE98 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E32F429DB34E6008ABE98 /* Style.swift */; };
 		087F1A4F29DF2067007BF770 /* TranslationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087F1A4E29DF2067007BF770 /* TranslationButton.swift */; };
+		088CD11B29E591140007A742 /* WidgetDaily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088CD11A29E591140007A742 /* WidgetDaily.swift */; };
+		088CD11D29E5916C0007A742 /* WidgetHourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088CD11C29E5916C0007A742 /* WidgetHourly.swift */; };
+		088CD11F29E591B50007A742 /* WidgetWeekly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088CD11E29E591B50007A742 /* WidgetWeekly.swift */; };
 		0890319429E1796B000EF722 /* TranslationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0890319329E1796B000EF722 /* TranslationTextField.swift */; };
+		089248FF29E525320025DB33 /* ConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089248FE29E525320025DB33 /* ConverterView.swift */; };
+		0892490129E531730025DB33 /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490029E531730025DB33 /* CurrencyButton.swift */; };
+		0892490329E5325C0025DB33 /* CurrencyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490229E5325C0025DB33 /* CurrencyInput.swift */; };
+		0892490529E53C110025DB33 /* ChartsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490429E53C110025DB33 /* ChartsButton.swift */; };
+		0892490929E546440025DB33 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490829E546440025DB33 /* WeatherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +50,7 @@
 /* Begin PBXFileReference section */
 		08793AF829DBFE500024A431 /* Nexa-XBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-XBold.ttf"; path = "../../../../../../../../Library/Fonts/Nexa-XBold.ttf"; sourceTree = "<group>"; };
 		08793AF929DBFE500024A431 /* Nexa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Bold.ttf"; path = "../../../../../../../../Library/Fonts/Nexa-Bold.ttf"; sourceTree = "<group>"; };
-		08793AFE29DBFECC0024A431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		08793AFE29DBFECC0024A431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08793AFF29DC0A520024A431 /* Nexa-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Regular.otf"; path = "../../../../../../../../Library/Fonts/Nexa-Regular.otf"; sourceTree = "<group>"; };
 		087E32C729DB22A0008ABE98 /* Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baluchon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaluchonApp.swift; sourceTree = "<group>"; };
@@ -56,7 +64,15 @@
 		087E32E729DB22A6008ABE98 /* BaluchonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaluchonUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		087E32F429DB34E6008ABE98 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		087F1A4E29DF2067007BF770 /* TranslationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationButton.swift; sourceTree = "<group>"; };
+		088CD11A29E591140007A742 /* WidgetDaily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDaily.swift; sourceTree = "<group>"; };
+		088CD11C29E5916C0007A742 /* WidgetHourly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetHourly.swift; sourceTree = "<group>"; };
+		088CD11E29E591B50007A742 /* WidgetWeekly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetWeekly.swift; sourceTree = "<group>"; };
 		0890319329E1796B000EF722 /* TranslationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTextField.swift; sourceTree = "<group>"; };
+		089248FE29E525320025DB33 /* ConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterView.swift; sourceTree = "<group>"; };
+		0892490029E531730025DB33 /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
+		0892490229E5325C0025DB33 /* CurrencyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInput.swift; sourceTree = "<group>"; };
+		0892490429E53C110025DB33 /* ChartsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsButton.swift; sourceTree = "<group>"; };
+		0892490829E546440025DB33 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +137,8 @@
 				08793AEE29DBFCD60024A431 /* Fonts */,
 				087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */,
 				087E32CC29DB22A1008ABE98 /* TranslationView.swift */,
+				089248FE29E525320025DB33 /* ConverterView.swift */,
+				0892490829E546440025DB33 /* WeatherView.swift */,
 				087E32F429DB34E6008ABE98 /* Style.swift */,
 				0890319229E1794E000EF722 /* Components */,
 				087E32CE29DB22A5008ABE98 /* Assets.xcassets */,
@@ -157,6 +175,12 @@
 		0890319229E1794E000EF722 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0892490029E531730025DB33 /* CurrencyButton.swift */,
+				088CD11C29E5916C0007A742 /* WidgetHourly.swift */,
+				088CD11E29E591B50007A742 /* WidgetWeekly.swift */,
+				088CD11A29E591140007A742 /* WidgetDaily.swift */,
+				0892490229E5325C0025DB33 /* CurrencyInput.swift */,
+				0892490429E53C110025DB33 /* ChartsButton.swift */,
 				087F1A4E29DF2067007BF770 /* TranslationButton.swift */,
 				0890319329E1796B000EF722 /* TranslationTextField.swift */,
 			);
@@ -297,9 +321,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				087E32CD29DB22A1008ABE98 /* TranslationView.swift in Sources */,
+				0892490329E5325C0025DB33 /* CurrencyInput.swift in Sources */,
+				0892490129E531730025DB33 /* CurrencyButton.swift in Sources */,
 				087F1A4F29DF2067007BF770 /* TranslationButton.swift in Sources */,
 				087E32F529DB34E6008ABE98 /* Style.swift in Sources */,
+				0892490929E546440025DB33 /* WeatherView.swift in Sources */,
+				089248FF29E525320025DB33 /* ConverterView.swift in Sources */,
+				0892490529E53C110025DB33 /* ChartsButton.swift in Sources */,
+				088CD11D29E5916C0007A742 /* WidgetHourly.swift in Sources */,
+				088CD11F29E591B50007A742 /* WidgetWeekly.swift in Sources */,
 				0890319429E1796B000EF722 /* TranslationTextField.swift in Sources */,
+				088CD11B29E591140007A742 /* WidgetDaily.swift in Sources */,
 				087E32CB29DB22A1008ABE98 /* BaluchonApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
