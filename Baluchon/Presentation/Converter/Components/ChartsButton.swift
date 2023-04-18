@@ -14,11 +14,11 @@ struct ChartsButton: View {
         
         Text(date)
             .font(.defaultSecondaryText)
-            .foregroundColor(.primaryLight)
+            .foregroundColor(.primaryColor)
             .padding(.horizontal, 16)
             .padding(.vertical, 7)
             .background(
-                Color.secondaryLight,
+                Color.secondaryColor,
                 in: RoundedRectangle(
                     cornerRadius: 15,
                     style: .continuous))
@@ -29,5 +29,7 @@ struct ChartsButton: View {
 struct ChartsButton_Previews: PreviewProvider {
     static var previews: some View {
         ChartsButton(date: "Day")
+            .padding()
+            .background(Color.backgroundColor)
     }
 }

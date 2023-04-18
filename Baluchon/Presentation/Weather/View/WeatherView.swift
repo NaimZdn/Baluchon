@@ -10,8 +10,9 @@ import SwiftUI
 struct WeatherView: View {
     var body: some View {
         VStack {
-            Text("Paris, \(Text("France").foregroundColor(.placeholderLight))")
+            Text("Paris, \(Text("France").foregroundColor(.placeholderColor))")
                 .font(.defaultTitle2)
+                .foregroundColor(Color.textColor)
                 .padding(.bottom, 10)
             
             ScrollView() {
@@ -23,7 +24,7 @@ struct WeatherView: View {
             }
             .padding()
         }
-        .background(Color.backgroundLight)
+        .background(Color.backgroundColor)
     }
 }
 

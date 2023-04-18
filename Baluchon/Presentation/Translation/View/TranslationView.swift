@@ -23,7 +23,7 @@ struct TranslationView: View {
                         }
                     } label: {
                         Image(systemName: "arrow.left.arrow.right")
-                            .foregroundColor(Color.iconLight)
+                            .foregroundColor(Color.iconColor)
                             .font(.system(size: 15))
                     }
                     TranslationButton(text: "\(isReversed ? "French" : "English (US)")",
@@ -37,7 +37,7 @@ struct TranslationView: View {
             }
         }
         .padding(20)
-        .background(Color.backgroundLight)
+        .background(Color.backgroundColor)
     }
 }
 

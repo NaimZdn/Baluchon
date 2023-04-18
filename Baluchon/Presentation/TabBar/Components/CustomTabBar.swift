@@ -27,12 +27,12 @@ struct CustomTabBar: View {
                         Image("\(selectedTab == tab ? selectedTab.rawValue : tab.rawValue)")
                             .resizable()
                             .frame(width: 25, height: 25)
-                            .foregroundColor(selectedTab == tab ? .primaryLight : .iconLight)
+                            .foregroundColor(selectedTab == tab ? .primaryColor : .iconColor)
                             .onTapGesture {
                                 selectedTab = tab
                             }
                         Circle()
-                            .foregroundColor(.primaryLight)
+                            .foregroundColor(.primaryColor)
                             .opacity(selectedTab == tab ? 1 : 0)
                             .frame(width: 5, height: 5)
                     }
@@ -43,7 +43,7 @@ struct CustomTabBar: View {
             .padding()
             
             .frame(maxWidth: .infinity)
-            .background(Color.secondaryLight, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .background(Color.secondaryColor, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
             .padding(.horizontal, 20)
             
         }
@@ -56,5 +56,7 @@ struct CustomTabBar: View {
 struct CustomTabBar_Previews: PreviewProvider {
     static var previews: some View {
         CustomTabBar(selectedTab: .constant(.translation))
+            .padding()
+            .background(Color.backgroundColor)
     }
 }

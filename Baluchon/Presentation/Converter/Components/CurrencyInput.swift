@@ -20,13 +20,14 @@ struct CurrencyInput: View {
                 
                 Text(currencyText)
                     .font(.defaultButtonCaption)
-                    .foregroundColor(.placeholderLight)
+                    .foregroundColor(.placeholderColor)
                     .baselineOffset(-4)
                 
             }
             HStack() {
                 TextField("", text: $currencyAmount)
                     .font(.defaultChangeAmount)
+                    .foregroundColor(.textColor)
                     .multilineTextAlignment(.trailing)
                     .baselineOffset(-4)
             
@@ -38,5 +39,7 @@ struct CurrencyInput: View {
 struct CurrencyInput_Previews: PreviewProvider {
     static var previews: some View {
         CurrencyInput(currencyAmount: "0.0", currencyIcon: "$", currencyText: "USD")
+            .padding()
+            .background(Color.backgroundColor)
     }
 }

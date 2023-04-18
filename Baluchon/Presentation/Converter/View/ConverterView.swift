@@ -16,6 +16,7 @@ struct ConverterView: View {
             VStack(spacing: 0) {
                 Text("Money Converter")
                     .font(.defaultTitle1)
+                    .foregroundColor(.textColor)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 39)
                 
@@ -23,16 +24,16 @@ struct ConverterView: View {
                 
                 HStack(spacing: 0) {
                     Circle()
-                        .foregroundColor(.primaryLight)
+                        .foregroundColor(.primaryColor)
                         .frame(maxWidth: 6, maxHeight: 6)
                     
                     Rectangle()
                         .cornerRadius(10)
                         .frame(maxWidth: .infinity, maxHeight: 2)
-                        .foregroundColor(Color.separation)
+                        .foregroundColor(Color.separationColor)
                     
                     Circle()
-                        .foregroundColor(.primaryLight)
+                        .foregroundColor(.primaryColor)
                         .frame(maxWidth: 6, maxHeight: 6)
                     
                 }
@@ -45,6 +46,7 @@ struct ConverterView: View {
             VStack(spacing: 0) {
                 Text("Charts")
                     .font(.defaultTitle1)
+                    .foregroundColor(.textColor)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 30)
                 
@@ -65,7 +67,7 @@ struct ConverterView: View {
             }
             .padding()
         }
-        .background(Color.backgroundLight)
+        .background(Color.backgroundColor)
     }
     
     func createChartsButton(date: String) -> ChartsButton {

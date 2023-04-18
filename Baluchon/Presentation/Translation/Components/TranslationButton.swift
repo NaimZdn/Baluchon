@@ -18,7 +18,7 @@ struct TranslationButton: View {
                 .frame(width: 24, height:24)
             Text(text)
                 .font(.defaultSecondaryText)
-                .foregroundColor(.black)
+                .foregroundColor(.textColor)
                 .baselineOffset(-7)
         }
         
@@ -26,7 +26,7 @@ struct TranslationButton: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 15)
         .background(
-            Color.secondaryLight,
+            Color.secondaryColor,
             in: RoundedRectangle(
                 cornerRadius: 15,
                 style: .continuous))
@@ -37,5 +37,7 @@ struct TranslationButton: View {
 struct TranslationButton_Previews: PreviewProvider {
     static var previews: some View {
         TranslationButton()
+            .padding()
+            .background(Color.backgroundColor)
     }
 }

@@ -29,7 +29,7 @@ struct TabBarView: View {
             Spacer()
             CustomTabBar(selectedTab: $selectedTab)
         }
-        .background(Color.backgroundLight)
+        .background(Color.backgroundColor)
     }
 }
 

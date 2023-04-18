@@ -13,10 +13,10 @@ struct CurrencyButton: View {
     var body: some View {
         Text(currencyIcon)
             .font(.defaultMoney)
-            .foregroundColor(.primaryLight)
+            .foregroundColor(.primaryColor)
             .frame(width: 50, height: 50)
             .background(
-                Color.secondaryLight,
+                Color.secondaryColor,
                 in: RoundedRectangle(
                     cornerRadius: 15,
                     style: .continuous))
@@ -27,5 +27,7 @@ struct CurrencyButton: View {
 struct CurrencyButton_Previews: PreviewProvider {
     static var previews: some View {
         CurrencyButton(currencyIcon: "$")
+            .padding()
+            .background(Color.backgroundColor)
     }
 }

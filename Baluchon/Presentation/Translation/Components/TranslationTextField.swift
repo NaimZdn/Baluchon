@@ -13,13 +13,15 @@ struct TranslationTextField: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Translate from \(Text(lang).foregroundColor(.primaryLight))")
+            Text("Translate from \(Text(lang).foregroundColor(.primaryColor))")
                 .font(.defaultButtonCaption)
+                .foregroundColor(.textColor)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack {
                 TextField("Écrivez ou collez votre texte ici.", text: $textInput, axis: .vertical)
                     .font(.defaultBody)
+                    
                     .padding([.horizontal, .top], 20)
                     .padding(.bottom, 20)
                 
@@ -29,25 +31,25 @@ struct TranslationTextField: View {
                     Rectangle()
                         .cornerRadius(10)
                         .frame(maxWidth: 313, maxHeight: 2)
-                        .foregroundColor(Color.separation)
+                        .foregroundColor(Color.separationColor)
                     
                     HStack() {
                         Image("microphone")
                             .resizable()
                             .frame(width: 24, height: 24)
-                            .foregroundColor(Color.iconLight)
+                            .foregroundColor(Color.iconColor)
                         
                         Spacer()
                         HStack(spacing: 15) {
                             Image("copy")
                                 .resizable()
                                 .frame(width: 20, height: 20)
-                                .foregroundColor(Color.iconLight)
+                                .foregroundColor(Color.iconColor)
                             
                             Image("volume")
                                 .resizable()
                                 .frame(width: 24, height: 24)
-                                .foregroundColor(Color.iconLight)
+                                .foregroundColor(Color.iconColor)
                         }
                     }
                     .padding([.horizontal, .bottom], 20)
@@ -57,22 +59,23 @@ struct TranslationTextField: View {
             }
             .frame(minWidth: 120, minHeight: 235, maxHeight: 235, alignment: .topLeading)
             .background(
-                Color.white,
+                Color.textFieldColor,
                 in: RoundedRectangle(
                     cornerRadius: 20,
                     style: .continuous))
-            .shadow(color: Color.separation, radius: 10, x: 0, y: 6)
+            .shadow(color: Color.separationColor, radius: 10, x: 0, y: 12 )
             
         }
         .padding(.bottom, 30)
         
     }
-    
 }
 
 struct TranslationTextField_Previews: PreviewProvider {
     static var previews: some View {
         TranslationTextField()
-            .background(Color.backgroundLight)
+            .padding()
+            .background(Color.backgroundColor)
+            
     }
 }
