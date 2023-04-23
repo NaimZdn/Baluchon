@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08349B7D29F5ECFB00AA4C04 /* TranslationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08349B7C29F5ECFB00AA4C04 /* TranslationViewModel.swift */; };
+		08349B7F29F5ED7900AA4C04 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08349B7E29F5ED7900AA4C04 /* UIApplication.swift */; };
+		08349B8129F5ED7F00AA4C04 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08349B8029F5ED7F00AA4C04 /* View.swift */; };
+		08349B8529F5EDBC00AA4C04 /* Traduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08349B8429F5EDBC00AA4C04 /* Traduction.swift */; };
 		08793AFB29DBFE500024A431 /* Nexa-XBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AF829DBFE500024A431 /* Nexa-XBold.ttf */; };
 		08793AFC29DBFE500024A431 /* Nexa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AF929DBFE500024A431 /* Nexa-Bold.ttf */; };
 		08793B0029DC0A520024A431 /* Nexa-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AFF29DC0A520024A431 /* Nexa-Regular.otf */; };
@@ -50,6 +54,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08349B7C29F5ECFB00AA4C04 /* TranslationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationViewModel.swift; sourceTree = "<group>"; };
+		08349B7E29F5ED7900AA4C04 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		08349B8029F5ED7F00AA4C04 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		08349B8429F5EDBC00AA4C04 /* Traduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Traduction.swift; sourceTree = "<group>"; };
 		08793AF829DBFE500024A431 /* Nexa-XBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-XBold.ttf"; path = "../../../../../../../../../../Library/Fonts/Nexa-XBold.ttf"; sourceTree = "<group>"; };
 		08793AF929DBFE500024A431 /* Nexa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Bold.ttf"; path = "../../../../../../../../../../Library/Fonts/Nexa-Bold.ttf"; sourceTree = "<group>"; };
 		08793AFE29DBFECC0024A431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,6 +112,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08349B7B29F5EC8D00AA4C04 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				08349B7C29F5ECFB00AA4C04 /* TranslationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		08349B8229F5EDBC00AA4C04 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				08349B8329F5EDBC00AA4C04 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		08349B8329F5EDBC00AA4C04 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				08349B8429F5EDBC00AA4C04 /* Traduction.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		08793AEE29DBFCD60024A431 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +169,7 @@
 		087E32C929DB22A0008ABE98 /* Baluchon */ = {
 			isa = PBXGroup;
 			children = (
+				08349B8229F5EDBC00AA4C04 /* Domain */,
 				08AD087A29ED0BAE006624FF /* Application */,
 				08AD087E29ED0BE5006624FF /* Presentation */,
 				08AD087D29ED0BD0006624FF /* Extensions */,
@@ -208,6 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				087E32F429DB34E6008ABE98 /* Style.swift */,
+				08349B8029F5ED7F00AA4C04 /* View.swift */,
+				08349B7E29F5ED7900AA4C04 /* UIApplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				08AD088329ED0D03006624FF /* View */,
+				08349B7B29F5EC8D00AA4C04 /* ViewModel */,
 				08AD088629ED0D16006624FF /* Components */,
 			);
 			path = Translation;
@@ -450,14 +486,18 @@
 				0892490329E5325C0025DB33 /* CurrencyInput.swift in Sources */,
 				0892490129E531730025DB33 /* CurrencyButton.swift in Sources */,
 				087F1A4F29DF2067007BF770 /* TranslationButton.swift in Sources */,
+				08349B7D29F5ECFB00AA4C04 /* TranslationViewModel.swift in Sources */,
 				087E32F529DB34E6008ABE98 /* Style.swift in Sources */,
 				0892490929E546440025DB33 /* WeatherView.swift in Sources */,
+				08349B8529F5EDBC00AA4C04 /* Traduction.swift in Sources */,
 				089248FF29E525320025DB33 /* ConverterView.swift in Sources */,
 				0892490529E53C110025DB33 /* ChartsButton.swift in Sources */,
 				088CD11D29E5916C0007A742 /* WidgetHourly.swift in Sources */,
 				088C846929ED2785006B556B /* CustomTabBar.swift in Sources */,
+				08349B7F29F5ED7900AA4C04 /* UIApplication.swift in Sources */,
 				088CD11F29E591B50007A742 /* WidgetWeekly.swift in Sources */,
 				0890319429E1796B000EF722 /* TranslationTextField.swift in Sources */,
+				08349B8129F5ED7F00AA4C04 /* View.swift in Sources */,
 				088CD11B29E591140007A742 /* WidgetDaily.swift in Sources */,
 				087E32CB29DB22A1008ABE98 /* BaluchonApp.swift in Sources */,
 				088C846629ED228C006B556B /* TabBarView.swift in Sources */,
