@@ -6,76 +6,131 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct TranslationTextField: View {
-    @State private var textInput = ""
-    var lang = ""
+    @ObservedObject var viewModel = TranslationViewModel()
+    @FocusState private var nameIsFocused: Bool
+    
+    @Binding var textInput: String
+    
+    @State private var isShowingView = false
+    @State var text = ""
+    
+    var isDisabled: Bool
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Translate from \(Text(lang).foregroundColor(.primaryColor))")
-                .font(.defaultButtonCaption)
-                .foregroundColor(.textColor)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
             VStack {
-                TextField("Écrivez ou collez votre texte ici.", text: $textInput, axis: .vertical)
-                    .font(.defaultBody)
+                HStack(alignment: .top) {
+                    TextField("Écrivez ou collez votre texte ici...", text: $textInput, axis: .vertical)
+                        .onTapGesture {
+                            viewModel.endTextEditing()
+                            
+                        }
+                        .font(.defaultBody)
+                        .focused($nameIsFocused)
+                        .toolbar {
+                            if !isDisabled {
+                                ToolbarItemGroup(placement: .keyboard) {
+                                    Spacer()
+                                    Button {
+                                        nameIsFocused = false
+                                    } label: {
+                                        Image(systemName: "keyboard.chevron.compact.down")
+                                            .foregroundColor(Color.iconColor)
+                                        
+                                    }
+                                }
+                            }
+                        }
                     
-                    .padding([.horizontal, .top], 20)
-                    .padding(.bottom, 20)
+                    if !textInput.isEmpty && !isDisabled {
+                        Button {
+                            textInput = ""
+                        } label: {
+                            Image(systemName: "xmark")
+                                .font(.system(size: 15))
+                                .foregroundColor(Color.iconColor)
+                            
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
                 
                 Spacer()
                 
                 VStack(spacing: 0) {
                     Rectangle()
                         .cornerRadius(10)
-                        .frame(maxWidth: 313, maxHeight: 2)
+                        .frame(maxWidth: .infinity, maxHeight: 2)
                         .foregroundColor(Color.separationColor)
                     
-                    HStack() {
-                        Image("microphone")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(Color.iconColor)
-                        
-                        Spacer()
-                        HStack(spacing: 15) {
-                            Image("copy")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(Color.iconColor)
+                    if isDisabled || textInput.isEmpty {
+                        HStack() {
+                            if !isDisabled && textInput.isEmpty {
+                                Button {
+                                    textInput = viewModel.pasteToClipBoard(text: textInput)
+                                    
+                                } label: {
+                                    Text("Coller")
+                                        .baselineOffset(-3)
+                                        .font(.defaultBody)
+                                        .foregroundColor(Color.iconColor)
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 5)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                                .stroke(Color.iconColor)
+                                        )
+                                }
+                            }
                             
-                            Image("volume")
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                                .foregroundColor(Color.iconColor)
+                            Spacer()
+                            HStack(spacing: 15) {
+                                Button {
+                                    isShowingView = viewModel.copyToClipboard(text: textInput)
+                                    
+                                } label: {
+                                    if !textInput.isEmpty {
+                                        if isShowingView {
+                                            Text("Copié !")
+                                                .foregroundColor(Color.placeholderColor)
+                                                .onAppear {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                                        withAnimation(.easeInOut(duration: 0.3)) {
+                                                            isShowingView = false
+                                                            
+                                                        }
+                                                    }
+                                                }
+                                        } else {
+                                            Image("copy")
+                                                .resizable()
+                                                .frame(width: 20, height: 20)
+                                                .foregroundColor(Color.iconColor)
+                                        }
+                                    }
+                                }
+                            }
                         }
+                        .padding(.horizontal, 20)
+                        .padding(.top, 15)
                     }
-                    .padding([.horizontal, .bottom], 20)
-                    .padding(.top, 15)
-                    
                 }
             }
-            .frame(minWidth: 120, minHeight: 235, maxHeight: 235, alignment: .topLeading)
-            .background(
-                Color.textFieldColor,
-                in: RoundedRectangle(
-                    cornerRadius: 20,
-                    style: .continuous))
-            .shadow(color: Color.separationColor, radius: 10, x: 0, y: 12 )
-            
+            .frame(minWidth: 120, minHeight: 100, maxHeight: 100 , alignment: .topLeading)
+            .padding(.top, isDisabled ? 20 : 5)
         }
-        .padding(.bottom, 30)
-        
     }
 }
 
 struct TranslationTextField_Previews: PreviewProvider {
+    
+    @State static var textInput = ""
+    
     static var previews: some View {
-        TranslationTextField()
-            .padding()
-            .background(Color.backgroundColor)
-            
+        TranslationTextField(textInput: $textInput, isDisabled: true)
     }
 }
+
