@@ -10,6 +10,7 @@ import SwiftUI
 struct TranslationButton: View {
     var text = "French"
     var image = "french"
+    var id = "fr"
     
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
@@ -21,9 +22,8 @@ struct TranslationButton: View {
                 .foregroundColor(.textColor)
                 .baselineOffset(-7)
         }
-        
-        .frame(minWidth: 120, maxHeight: 24, alignment: .leading)
-        .padding(.horizontal, 20)
+        .frame(minWidth: 120, alignment: .leading)
+        .padding(.horizontal, 15)
         .padding(.vertical, 15)
         .background(
             Color.secondaryColor,
