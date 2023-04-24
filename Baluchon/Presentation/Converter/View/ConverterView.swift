@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ConverterView: View {
-    @State var amount = "0.0"
-    private let dateOptions =  ["Day", "Week", "Month", "Years"]
+    @State var amount = 0.0
     
     var body: some View {
         VStack {
@@ -42,37 +41,12 @@ struct ConverterView: View {
                 CurrencyInput(currencyAmount: "0.0", currencyIcon: "€", currencyText: "EUR")
             }
             .padding()
+            Spacer()
             
-            VStack(spacing: 0) {
-                Text("Charts")
-                    .font(.defaultTitle1)
-                    .foregroundColor(.textColor)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.bottom, 30)
-                
-                HStack(spacing: 20) {
-                    CurrencyButton(currencyIcon: "$")
-                    CurrencyButton(currencyIcon: "€")
-                    
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Spacer()
-                
-                HStack(spacing: 20) {
-                    ForEach(dateOptions, id: \.self) { date in
-                        createChartsButton(date: date)
-                    }
-                }
-            }
-            .padding()
         }
         .background(Color.backgroundColor)
     }
     
-    func createChartsButton(date: String) -> ChartsButton {
-        ChartsButton(date: date)
-    }
 }
 
 struct ConverterView_Previews: PreviewProvider {

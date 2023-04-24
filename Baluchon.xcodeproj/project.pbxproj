@@ -11,6 +11,7 @@
 		08349B7F29F5ED7900AA4C04 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08349B7E29F5ED7900AA4C04 /* UIApplication.swift */; };
 		08349B8129F5ED7F00AA4C04 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08349B8029F5ED7F00AA4C04 /* View.swift */; };
 		08349B8529F5EDBC00AA4C04 /* Traduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08349B8429F5EDBC00AA4C04 /* Traduction.swift */; };
+		08349B8829F5F2EA00AA4C04 /* Env.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08349B8729F5F2EA00AA4C04 /* Env.plist */; };
 		08793AFB29DBFE500024A431 /* Nexa-XBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AF829DBFE500024A431 /* Nexa-XBold.ttf */; };
 		08793AFC29DBFE500024A431 /* Nexa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AF929DBFE500024A431 /* Nexa-Bold.ttf */; };
 		08793B0029DC0A520024A431 /* Nexa-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AFF29DC0A520024A431 /* Nexa-Regular.otf */; };
@@ -32,7 +33,6 @@
 		089248FF29E525320025DB33 /* ConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089248FE29E525320025DB33 /* ConverterView.swift */; };
 		0892490129E531730025DB33 /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490029E531730025DB33 /* CurrencyButton.swift */; };
 		0892490329E5325C0025DB33 /* CurrencyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490229E5325C0025DB33 /* CurrencyInput.swift */; };
-		0892490529E53C110025DB33 /* ChartsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490429E53C110025DB33 /* ChartsButton.swift */; };
 		0892490929E546440025DB33 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490829E546440025DB33 /* WeatherView.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +58,7 @@
 		08349B7E29F5ED7900AA4C04 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		08349B8029F5ED7F00AA4C04 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		08349B8429F5EDBC00AA4C04 /* Traduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Traduction.swift; sourceTree = "<group>"; };
+		08349B8729F5F2EA00AA4C04 /* Env.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Env.plist; sourceTree = "<group>"; };
 		08793AF829DBFE500024A431 /* Nexa-XBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-XBold.ttf"; path = "../../../../../../../../../../Library/Fonts/Nexa-XBold.ttf"; sourceTree = "<group>"; };
 		08793AF929DBFE500024A431 /* Nexa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Bold.ttf"; path = "../../../../../../../../../../Library/Fonts/Nexa-Bold.ttf"; sourceTree = "<group>"; };
 		08793AFE29DBFECC0024A431 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		089248FE29E525320025DB33 /* ConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterView.swift; sourceTree = "<group>"; };
 		0892490029E531730025DB33 /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
 		0892490229E5325C0025DB33 /* CurrencyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInput.swift; sourceTree = "<group>"; };
-		0892490429E53C110025DB33 /* ChartsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsButton.swift; sourceTree = "<group>"; };
 		0892490829E546440025DB33 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +232,7 @@
 			children = (
 				08AD088829ED115D006624FF /* Assets  */,
 				087E32CA29DB22A1008ABE98 /* BaluchonApp.swift */,
+				08349B8729F5F2EA00AA4C04 /* Env.plist */,
 				08793AFE29DBFECC0024A431 /* Info.plist */,
 			);
 			path = Application;
@@ -335,7 +336,6 @@
 			children = (
 				0892490029E531730025DB33 /* CurrencyButton.swift */,
 				0892490229E5325C0025DB33 /* CurrencyInput.swift */,
-				0892490429E53C110025DB33 /* ChartsButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -453,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08349B8829F5F2EA00AA4C04 /* Env.plist in Resources */,
 				08793AFB29DBFE500024A431 /* Nexa-XBold.ttf in Resources */,
 				087E32D229DB22A5008ABE98 /* Preview Assets.xcassets in Resources */,
 				087E32CF29DB22A5008ABE98 /* Assets.xcassets in Resources */,
@@ -491,7 +492,6 @@
 				0892490929E546440025DB33 /* WeatherView.swift in Sources */,
 				08349B8529F5EDBC00AA4C04 /* Traduction.swift in Sources */,
 				089248FF29E525320025DB33 /* ConverterView.swift in Sources */,
-				0892490529E53C110025DB33 /* ChartsButton.swift in Sources */,
 				088CD11D29E5916C0007A742 /* WidgetHourly.swift in Sources */,
 				088C846929ED2785006B556B /* CustomTabBar.swift in Sources */,
 				08349B7F29F5ED7900AA4C04 /* UIApplication.swift in Sources */,
