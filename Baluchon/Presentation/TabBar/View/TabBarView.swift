@@ -30,6 +30,7 @@ struct TabBarView: View {
             CustomTabBar(selectedTab: $selectedTab)
         }
         .background(Color.backgroundColor)
+        .padding(.bottom, 20)
     }
 }
 
