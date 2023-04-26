@@ -24,7 +24,7 @@ extension Color {
     private static let titleLight = Color(hex: 0x000000)
     public static let iconLight = Color(hex: 0x000000, alpha: 0.3)
     public static let placeholderLight = Color(hex: 0x000000, alpha: 0.5)
-    private static let separation = Color(hex: 0x000000, alpha: 0.1)
+    private static let separationLight = Color(hex: 0xD9D9D9, alpha: 0.3)
     private static let toggle = Color(hex: 0xD9D9D9)
     public static let widgetTextLight = Color(hex: 0x000000, alpha: 0.7)
     
@@ -33,7 +33,7 @@ extension Color {
     private static let secondaryDark = Color(hex: 0x101C43)
     private static let titleDark = Color(hex: 0xFFFFFF)
     private static let iconDark = Color(hex: 0xFFFFFF, alpha: 0.3)
-    private static let separationDark = Color(hex: 0xFFFFFF, alpha: 0.1)
+    private static let separationDark = Color(hex: 0xD9D9D9, alpha: 0.3)
     private static let placeholderDark = Color(hex: 0xFFFFFF, alpha: 0.5)
 
     public static let backgroundColor = Theme().isDarkMode ? backgroundDark : backgroundLight
@@ -41,7 +41,7 @@ extension Color {
     public static let secondaryColor = Theme().isDarkMode ? secondaryDark : secondaryLight
     public static let textColor = Theme().isDarkMode ? titleDark : titleLight
     public static let placeholderColor = Theme().isDarkMode ? placeholderDark : placeholderLight
-    public static let separationColor = Theme().isDarkMode ? separation : separation
+    public static let separationColor = Theme().isDarkMode ? separationDark : separationLight
     public static let iconColor = Theme().isDarkMode ? iconDark : iconLight
     public static let textFieldColor = Theme().isDarkMode ? secondaryDark : .white
   
