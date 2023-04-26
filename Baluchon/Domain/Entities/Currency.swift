@@ -7,6 +7,15 @@
 
 import Foundation
 
+struct CurrencyResponse: Codable {
+    let data: [String: CurrencyAmount]
+}
+
+struct CurrencyAmount: Codable {
+    let code: String
+    let value: Double
+}
+
 enum Currency: String {
     case euro = "€"
     case dollar = "$"
