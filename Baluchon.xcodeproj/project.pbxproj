@@ -34,6 +34,8 @@
 		0892490129E531730025DB33 /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490029E531730025DB33 /* CurrencyButton.swift */; };
 		0892490329E5325C0025DB33 /* CurrencyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490229E5325C0025DB33 /* CurrencyInput.swift */; };
 		0892490929E546440025DB33 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490829E546440025DB33 /* WeatherView.swift */; };
+		08AE5E3529F6B5F8004D45A6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AE5E3429F6B5F8004D45A6 /* Currency.swift */; };
+		08AE5E3829F6EE7C004D45A6 /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AE5E3729F6EE7C004D45A6 /* ConverterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		0892490029E531730025DB33 /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
 		0892490229E5325C0025DB33 /* CurrencyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInput.swift; sourceTree = "<group>"; };
 		0892490829E546440025DB33 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		08AE5E3429F6B5F8004D45A6 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		08AE5E3729F6EE7C004D45A6 /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				08349B8429F5EDBC00AA4C04 /* Traduction.swift */,
+				08AE5E3429F6B5F8004D45A6 /* Currency.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				08AD088229ED0CFC006624FF /* View */,
+				08AE5E3629F6EE64004D45A6 /* ViewModel  */,
 				08AD088729ED0D1B006624FF /* Components */,
 			);
 			path = Converter;
@@ -347,6 +353,14 @@
 				087E32CE29DB22A5008ABE98 /* Assets.xcassets */,
 			);
 			path = "Assets ";
+			sourceTree = "<group>";
+		};
+		08AE5E3629F6EE64004D45A6 /* ViewModel  */ = {
+			isa = PBXGroup;
+			children = (
+				08AE5E3729F6EE7C004D45A6 /* ConverterViewModel.swift */,
+			);
+			path = "ViewModel ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,6 +507,8 @@
 				08349B8529F5EDBC00AA4C04 /* Traduction.swift in Sources */,
 				089248FF29E525320025DB33 /* ConverterView.swift in Sources */,
 				088CD11D29E5916C0007A742 /* WidgetHourly.swift in Sources */,
+				08AE5E3529F6B5F8004D45A6 /* Currency.swift in Sources */,
+				08AE5E3829F6EE7C004D45A6 /* ConverterViewModel.swift in Sources */,
 				088C846929ED2785006B556B /* CustomTabBar.swift in Sources */,
 				08349B7F29F5ED7900AA4C04 /* UIApplication.swift in Sources */,
 				088CD11F29E591B50007A742 /* WidgetWeekly.swift in Sources */,
