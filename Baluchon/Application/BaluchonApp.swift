@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct BaluchonApp: App {
-    
     @ObservedObject var theme = Theme()
     
     var body: some Scene {
@@ -22,7 +21,6 @@ struct BaluchonApp: App {
 }
 
 class Theme: ObservableObject {
-    
     @Published var isDarkMode: Bool =  false
     
     init(){

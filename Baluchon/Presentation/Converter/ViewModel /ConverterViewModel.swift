@@ -63,8 +63,7 @@ class ConverterViewModel: ObservableObject {
                     self.convertCurrencyCode = response.data[convertCurrency]?.code ?? ""
                     self.exchangeRate = convertedValue
                     self.exchangeRateAvailable = true
-                    
-                    print(self.exchangeRates)
+
                 }
             })
     }
@@ -89,7 +88,6 @@ class ConverterViewModel: ObservableObject {
         if components.count > 2 {
             filteredInput = components[0] + "." + components[1].prefix(2)
         }
-    
         return filteredInput
     }
 }
