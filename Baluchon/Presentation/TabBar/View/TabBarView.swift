@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TabBarView: View {
-    
     @State private var selectedTab: TabBar = .converter
     
     init() {
@@ -16,21 +15,24 @@ struct TabBarView: View {
     }
     
     var body: some View {
-        VStack {
-            TabView(selection: $selectedTab) {
-                if selectedTab == .converter {
+        ZStack {
+            VStack {
+                
+                TabView(selection: $selectedTab) {
                     ConverterView()
-                } else if selectedTab == .translation {
+                        .tag(TabBar.converter)
                     TranslationView()
-                } else {
+                        .tag(TabBar.translation)
                     WeatherView()
+                        .tag(TabBar.weather)
                 }
+                CustomTabBar(selectedTab: $selectedTab)
+                    .padding(.top, 10)
+                    
             }
-            Spacer()
-            CustomTabBar(selectedTab: $selectedTab)
         }
         .background(Color.backgroundColor)
-        .padding(.bottom, 20)
+        .ignoresSafeArea(.keyboard)
     }
 }
 
