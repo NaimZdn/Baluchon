@@ -7,13 +7,14 @@
 
 import Foundation
 
+// MARK: - API Data struct
+
 struct Welcome: Codable {
     let location: Location
     let current: Current
     let forecast: Forecast
 }
 
-// MARK: - Current
 struct Current: Codable {
     let lastUpdatedEpoch: Int
     let lastUpdated: String
@@ -57,19 +58,16 @@ struct Current: Codable {
     }
 }
 
-// MARK: - Condition
 struct Condition: Codable {
     let text: String
     let icon: String
     let code: Int
 }
 
-// MARK: - Forecast
 struct Forecast: Codable {
     let forecastday: [Forecastday]
 }
 
-// MARK: - Forecastday
 struct Forecastday: Codable {
     let date: String
     let dateEpoch: Int
@@ -84,7 +82,6 @@ struct Forecastday: Codable {
     }
 }
 
-// MARK: - Astro
 struct Astro: Codable {
     let sunrise, sunset, moonrise, moonset: String
     let moonPhase, moonIllumination: String
@@ -99,7 +96,6 @@ struct Astro: Codable {
     }
 }
 
-// MARK: - Day
 struct Day: Codable {
     let maxtempC, maxtempF, mintempC, mintempF: Double
     let avgtempC, avgtempF, maxwindMph, maxwindKph: Double
@@ -134,7 +130,6 @@ struct Day: Codable {
     }
 }
 
-// MARK: - Hour
 struct Hour: Codable {
     let timeEpoch: Int
     let time: String
@@ -191,7 +186,6 @@ struct Hour: Codable {
     }
 }
 
-// MARK: - Location
 struct Location: Codable {
     let name, region, country: String
     let lat, lon: Double
@@ -204,5 +198,20 @@ struct Location: Codable {
         case tzID = "tz_id"
         case localtimeEpoch = "localtime_epoch"
         case localtime
+    }
+}
+
+// MARK: - Lists of locations
+enum CurrentLocation : String, CaseIterable {
+    case paris = "Paris"
+    case newYork = "New-York"
+
+    var countryName: String {
+        switch self {
+        case .paris:
+            return "France"
+        case .newYork:
+            return "États-Unis"
+        }
     }
 }
