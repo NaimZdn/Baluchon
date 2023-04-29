@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 extension Color {
+    static let theme = Theme()
+    
     init(hex: UInt, alpha: Double = 1) {
         self.init(
             .sRGB	,
@@ -18,41 +20,62 @@ extension Color {
             opacity: alpha
         )
     }
-    private static let backgroundLight = Color(hex: 0xFAFAFA)
-    private static let primaryLight = Color(hex: 0xC0602C)
-    private static let secondaryLight = Color(hex: 0xF2E3D1)
-    private static let titleLight = Color(hex: 0x000000)
+    // MARK: - LightMode
+    public static let backgroundLight = Color(hex: 0xFAFAFA)
     public static let iconLight = Color(hex: 0x000000, alpha: 0.3)
     public static let placeholderLight = Color(hex: 0x000000, alpha: 0.5)
-    private static let separationLight = Color(hex: 0xD9D9D9, alpha: 0.3)
-    private static let toggle = Color(hex: 0xD9D9D9)
     public static let widgetTextLight = Color(hex: 0x000000, alpha: 0.7)
-    
-    private static let backgroundDark = Color(hex: 0x05103A)
-    private static let primaryDark = Color(hex: 0xF2E3D1)
-    private static let secondaryDark = Color(hex: 0x101C43)
-    private static let titleDark = Color(hex: 0xFFFFFF)
-    private static let iconDark = Color(hex: 0xFFFFFF, alpha: 0.3)
-    private static let separationDark = Color(hex: 0xD9D9D9, alpha: 0.3)
-    private static let placeholderDark = Color(hex: 0xFFFFFF, alpha: 0.5)
-
-    public static let backgroundColor = Theme().isDarkMode ? backgroundDark : backgroundLight
-    public static let primaryColor = Theme().isDarkMode ? primaryDark : primaryLight
-    public static let secondaryColor = Theme().isDarkMode ? secondaryDark : secondaryLight
-    public static let textColor = Theme().isDarkMode ? titleDark : titleLight
-    public static let placeholderColor = Theme().isDarkMode ? placeholderDark : placeholderLight
-    public static let separationColor = Theme().isDarkMode ? separationDark : separationLight
-    public static let iconColor = Theme().isDarkMode ? iconDark : iconLight
-    public static let textFieldColor = Theme().isDarkMode ? secondaryDark : .white
-  
+    public static let widgetMinDegreeLight = Color(hex: 0x000000, alpha: 0.25)
     public static let gradientLight = LinearGradient(colors: [Color(hex: 0xEBD0B9), Color(hex: 0xF2E3D1)], startPoint: .bottomLeading, endPoint: .topTrailing)
+    
+    // MARK: - DarkMode
+    public static let backgroundDark = Color(hex: 0x05103A)
+    public static let placeholderDark = Color(hex: 0xFFFFFF, alpha: 0.5)
+    public static let widgetTextDark = Color(hex: 0xFFFFFF, alpha: 0.7)
+    public static let widgetMinDegreeDark = Color(hex: 0xFFFFFF, alpha: 0.25)
     public static let gradientDark = LinearGradient(colors: [Color(hex: 0x2E335A), Color(hex: 0x1C1B33)], startPoint: .topLeading, endPoint: .bottomTrailing)
     
+    // MARK: - ColorMode depends on the time
+    static var backgroundColor: Color {
+        theme.isDarkMode ? Color(hex: 0x05103A) : Color(hex: 0xFAFAFA)
+    }
+    
+    static var primaryColor: Color {
+        theme.isDarkMode ? Color(hex: 0xF2E3D1): Color(hex: 0xC0602C)
+    }
+    
+    static var secondaryColor: Color {
+        theme.isDarkMode ? Color(hex: 0x101C43) : Color(hex: 0xF2E3D1)
+    }
+    
+    static var textColor: Color {
+        theme.isDarkMode ? Color(hex: 0xFFFFFF) : Color(hex: 0x000000)
+    }
+    
+    static var iconColor: Color {
+        theme.isDarkMode ? Color(hex: 0xFFFFFF, alpha: 0.3) : Color(hex: 0x000000, alpha: 0.3)
+    }
+    
+    static var placeholderColor: Color {
+        theme.isDarkMode ? Color(hex: 0xFFFFFF, alpha: 0.5) : Color(hex: 0x000000, alpha: 0.5)
+    }
+    
+    static var separationColor: Color {
+        theme.isDarkMode ? Color(hex: 0xD9D9D9, alpha: 0.3) : Color(hex: 0xD9D9D9, alpha: 0.3)
+    }
+    
+    static var textFieldColor: Color {
+        theme.isDarkMode ? Color(hex: 0xD9D9D9, alpha: 0.3) : Color(hex: 0xD9D9D9, alpha: 0.3)
+    }
+    
+    static var toggleColor: Color {
+        theme.isDarkMode ? Color(hex: 0xD9D9D9, alpha: 0.3) : Color(hex: 0xD9D9D9)
+    }
 }
 
 extension Font {
     
-    // Font Declaration
+    // MARK: - Fonts declaration
     
     static func fontRegular(_ size: CGFloat) -> Font {
         return Font.custom("Nexa-Regular", size: size)
@@ -66,7 +89,7 @@ extension Font {
         return Font.custom("Nexa-XBold", size: size)
     }
     
-    // Default Fonts
+   // MARK: - Default fonts
     
     static var defaultTertiaryText: Font {
         return fontRegular(13)
@@ -100,7 +123,7 @@ extension Font {
         return fontBold(32)
     }
     
-    // Widgets Fonts
+    // MARK: - Widgets fonts
     
     static var widgetsHourlyHours: Font {
         return fontXBold(13)
@@ -133,9 +156,6 @@ extension Font {
     static var widgetsDailyDegree: Font {
         return fontXBold(60)
     }
-    
-    
-    
 }
 
 
