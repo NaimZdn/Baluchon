@@ -2,35 +2,42 @@
 //  WeatherView.swift
 //  Baluchon
 //
-//  Created by Zidouni on 11/04/2023.
+//  Created by Zidouni on 27/04/2023.
 //
 
 import SwiftUI
 
 struct WeatherView: View {
+    @StateObject private var viewModel = WeatherViewModel()
+    private let cities = CurrentLocation.allCases
+    @State private var selectedTabIndex = 0
+    
     var body: some View {
         VStack {
-            Text("Paris, \(Text("France").foregroundColor(.placeholderColor))")
-                .font(.defaultTitle2)
-                .foregroundColor(Color.textColor)
-                .padding(.bottom, 10)
-            
-            ScrollView() {
-                VStack {
-                    WidgetDaily()
-                    WidgetHourly()
-                    WidgetWeekly()
+            TabView(selection: $selectedTabIndex) {
+                ForEach(cities.indices, id: \.self) { index in
+                    ZStack {
+                        WeatherCity(city: cities[index].rawValue, country: cities[index].countryName)
+                    }
+                    .tag(index)
                 }
             }
-            .padding()
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            
+            HStack(spacing: 10) {
+                ForEach(cities.indices, id: \.self) { index in
+                    Circle()
+                        .foregroundColor(selectedTabIndex == index ? .primaryColor : .toggleColor)
+                        .frame(width: 10, height: 10)
+                }
+            }
         }
         .background(Color.backgroundColor)
     }
 }
 
-struct WeatherView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         WeatherView()
     }
 }
-	
