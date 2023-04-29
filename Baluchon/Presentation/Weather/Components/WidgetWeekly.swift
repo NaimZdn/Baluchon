@@ -8,39 +8,44 @@
 import SwiftUI
 
 struct WidgetWeekly: View {
+    var date: String
+    var maxTemp: Double
+    var minTemp: Double
+    var isNight: Bool
+    var weatherIcon: String
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 10) {
-                Text("Mercredi 12 avril")
+                Text("\(date)")
                     .font(.widgetsWeeklyHours)
-                    .foregroundColor(Color.widgetTextLight)
+                    .foregroundColor(isNight ? Color.widgetTextDark : Color.widgetTextLight)
                 
-                Text("18°\(Text("/10°").font(.widgetsWeeklyMinDegree).foregroundColor(.iconLight).baselineOffset(3))")
+                Text("\(String(format: "%.0f", maxTemp))°\(Text("/\(String(format: "%.0f", minTemp))°").font(.widgetsWeeklyMinDegree).foregroundColor(isNight ? Color.widgetMinDegreeDark : Color.widgetMinDegreeLight).baselineOffset(3))")
                     .font(.widgetsWeeklyMaxDegree)
-                    .foregroundColor(.placeholderLight)
+                    .foregroundColor(isNight ? Color.placeholderDark : Color.placeholderLight)
                
             }
             Spacer()
-            
-            Image("sunny")
+            Image("\(weatherIcon)")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: .infinity, height: 60)
+                .frame(width: 60)
             
         }
         .padding(.vertical, 15)
         .padding(.horizontal, 25)
         .background(
-            Color.gradientLight,
+            isNight ? Color.gradientDark : Color.gradientLight,
             in: RoundedRectangle(
                 cornerRadius: 20,
                 style: .continuous))
-        .padding(.bottom, 15)
+        .padding(.bottom, 10)
     }
 }
 
 struct WidgetWeekly_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetWeekly()
+        WidgetWeekly(date: "Lundi 24 avril", maxTemp: 12.0, minTemp: 25.6, isNight: false, weatherIcon: "Cloudy")
     }
 }

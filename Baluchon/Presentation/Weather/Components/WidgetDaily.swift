@@ -8,33 +8,38 @@
 import SwiftUI
 
 struct WidgetDaily: View {
+    @Binding var icon: String
+    @Binding var temperature: Double
+    @Binding var localTime: String
+    @Binding var hour: String
+    var isNight: Bool
+    
     var body: some View {
         HStack() {
             VStack(alignment: .leading, spacing: 5) {
-                Text("Mardi 11 avril")
+                Text("\(localTime)")
                     .font(.widgetsDailyDate)
-                    .foregroundColor(.widgetTextLight)
+                    .foregroundColor(isNight ? Color.widgetTextDark : Color.widgetTextLight)
                 
-                Text("9:50")
+                Text("\(hour)")
                     .font(.widgetsDailyHours)
-                    .foregroundColor(.placeholderLight)
+                    .foregroundColor(isNight ? Color.placeholderDark : Color.placeholderLight)
                     .padding(.bottom, 20)
                 
-                Text("9°")
+                Text("\(String(format: "%.0f", temperature))°")
                     .font(.widgetsDailyDegree)
-                    .foregroundColor(.placeholderLight)
+                    .foregroundColor(isNight ? Color.placeholderDark : Color.placeholderLight)
             }
-            
             Spacer()
-            Image("cloudy")
+            Image("\(icon)")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: .infinity, height: 115)
+                .frame(width: 115)
         }
         .frame(maxWidth: .infinity)
         .padding(25)
         .background(
-            Color.gradientLight,
+            isNight ? Color.gradientDark : Color.gradientLight,
             in: RoundedRectangle(
                 cornerRadius: 25,
                 style: .continuous))
@@ -43,7 +48,12 @@ struct WidgetDaily: View {
 }
 
 struct WidgetDaily_Previews: PreviewProvider {
+    @State static var icon = "sunny"
+    @State static var temperature = 9.0
+    @State static var localTime = "Lundi 24 avril"
+    @State static var hour = "7:56"
+    
     static var previews: some View {
-        WidgetDaily()
+        WidgetDaily(icon: $icon, temperature: $temperature, localTime: $localTime, hour: $hour, isNight: true)
     }
 }
