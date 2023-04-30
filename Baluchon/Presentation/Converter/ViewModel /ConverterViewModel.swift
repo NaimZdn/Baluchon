@@ -68,27 +68,30 @@ class ConverterViewModel: ObservableObject {
             })
     }
     
-    func calculConvertedAmount(amount: String, rate: String) {
+    func calculConvertedAmount(amount: String, rate: String) -> String{
         let amountDouble = Double(amount) ?? 0.0
         let rateToDouble = Double(rate)
         let exchangeRate = amountDouble * rateToDouble!
         
-        amountConverted = String(format: "%.2f", exchangeRate)
+        return String(format: "%.2f", exchangeRate)
     }
     
     func validateCurrencyInput(_ input: String) -> String {
-        var filteredInput = input.filter { "0123456789.".contains($0) }
-        filteredInput = input.replacingOccurrences(of: ",", with: ".")
+        let allowedCharacters = CharacterSet(charactersIn: "0123456789,.")
+        let filteredInput = input.filter { allowedCharacters.contains(UnicodeScalar(String($0))!) }
+            .replacingOccurrences(of: ",", with: ".")
         
-        if filteredInput.first == "." {
-            filteredInput = "0" + filteredInput
+        var formattedInput = filteredInput
+        if formattedInput.first == "." {
+            formattedInput = "0" + formattedInput
         }
         
-        let components = filteredInput.components(separatedBy: ".")
+        let components = formattedInput.components(separatedBy: ".")
         if components.count > 2 {
-            filteredInput = components[0] + "." + components[1].prefix(2)
+            formattedInput = components[0] + "." + components[1].prefix(2)
         }
-        return filteredInput
+        
+        return formattedInput
     }
 }
 

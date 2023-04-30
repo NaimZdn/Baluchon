@@ -16,6 +16,7 @@ struct ConverterView: View {
     @State private var isValuesStrored = false
     @State private var baseCurrency = ""
     @State private var convertCurrency = ""
+    @State private var convertedAmount = ""
     
     private var convertFrom : String {
         isReversed ? Currency.dollar.currency: Currency.euro.currency
@@ -40,7 +41,7 @@ struct ConverterView: View {
                         amount = filteredInput
                        
                         if !amount.isEmpty {
-                            viewModel.calculConvertedAmount(amount: amount, rate: isValuesStrored ? viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]! : viewModel.exchangeRateString)
+                            convertedAmount = viewModel.calculConvertedAmount(amount: amount, rate: isValuesStrored ? viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]! : viewModel.exchangeRateString)
                            
                         }
                     }
@@ -62,7 +63,7 @@ struct ConverterView: View {
                             isValuesStrored = true
                         }
                         
-                        viewModel.calculConvertedAmount(amount: amount, rate: viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]!)
+                       convertedAmount = viewModel.calculConvertedAmount(amount: amount, rate: viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]!)
                         
 
                     } label: {
@@ -85,7 +86,7 @@ struct ConverterView: View {
                 }
                 .padding(.vertical, 20)
                 
-                CurrencyInput(currencyAmount: $viewModel.amountConverted, isDisabled: true, currencyIcon: isReversed ? Currency.euro.rawValue : Currency.dollar.rawValue, currencyText: convertTo)
+                CurrencyInput(currencyAmount: $convertedAmount, isDisabled: true, currencyIcon: isReversed ? Currency.euro.rawValue : Currency.dollar.rawValue, currencyText: convertTo)
             }
             
             HStack{
