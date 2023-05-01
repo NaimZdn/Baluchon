@@ -78,6 +78,11 @@ class WeatherViewModel: ObservableObject {
         dateFormatterOutput.dateFormat = "EEEE dd MMMM"
         
         let date = dateFormatterInput.date(from: string)
+        
+        guard date != nil else {
+            return "We cannot convert this String to Date"
+        }
+        
         return dateFormatterOutput.string(from: date!).localizedCapitalized
 
     }
@@ -95,6 +100,11 @@ class WeatherViewModel: ObservableObject {
         dateFormatterOutput.dateFormat = "HH:mm"
         
         let date = dateFormatterInput.date(from: string)
+        
+        guard date != nil else {
+            return "We cannot convert this String to Date"
+        }
+        
         return dateFormatterOutput.string(from: date!)
         
     }

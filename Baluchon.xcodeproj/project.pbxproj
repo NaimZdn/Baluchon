@@ -32,6 +32,8 @@
 		088CD11D29E5916C0007A742 /* WidgetHourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088CD11C29E5916C0007A742 /* WidgetHourly.swift */; };
 		088CD11F29E591B50007A742 /* WidgetWeekly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088CD11E29E591B50007A742 /* WidgetWeekly.swift */; };
 		0890319429E1796B000EF722 /* TranslationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0890319329E1796B000EF722 /* TranslationTextField.swift */; };
+		0891635029FFC8EB007D9684 /* TranslationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0891634F29FFC8EB007D9684 /* TranslationTests.swift */; };
+		0891635229FFCBE2007D9684 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0891635129FFCBE2007D9684 /* WeatherTests.swift */; };
 		089248FF29E525320025DB33 /* ConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089248FE29E525320025DB33 /* ConverterView.swift */; };
 		0892490129E531730025DB33 /* CurrencyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490029E531730025DB33 /* CurrencyButton.swift */; };
 		0892490329E5325C0025DB33 /* CurrencyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0892490229E5325C0025DB33 /* CurrencyInput.swift */; };
@@ -88,6 +90,8 @@
 		088CD11C29E5916C0007A742 /* WidgetHourly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetHourly.swift; sourceTree = "<group>"; };
 		088CD11E29E591B50007A742 /* WidgetWeekly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetWeekly.swift; sourceTree = "<group>"; };
 		0890319329E1796B000EF722 /* TranslationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTextField.swift; sourceTree = "<group>"; };
+		0891634F29FFC8EB007D9684 /* TranslationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationTests.swift; sourceTree = "<group>"; };
+		0891635129FFCBE2007D9684 /* WeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTests.swift; sourceTree = "<group>"; };
 		089248FE29E525320025DB33 /* ConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterView.swift; sourceTree = "<group>"; };
 		0892490029E531730025DB33 /* CurrencyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyButton.swift; sourceTree = "<group>"; };
 		0892490229E5325C0025DB33 /* CurrencyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInput.swift; sourceTree = "<group>"; };
@@ -201,6 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				087E32DB29DB22A6008ABE98 /* ConverterTests.swift */,
+				0891634F29FFC8EB007D9684 /* TranslationTests.swift */,
+				0891635129FFCBE2007D9684 /* WeatherTests.swift */,
 			);
 			path = BaluchonTests;
 			sourceTree = "<group>";
@@ -545,6 +551,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				087E32DC29DB22A6008ABE98 /* ConverterTests.swift in Sources */,
+				0891635029FFC8EB007D9684 /* TranslationTests.swift in Sources */,
+				0891635229FFCBE2007D9684 /* WeatherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
