@@ -71,6 +71,10 @@ extension Color {
     static var toggleColor: Color {
         theme.isDarkMode ? Color(hex: 0xD9D9D9, alpha: 0.3) : Color(hex: 0xD9D9D9)
     }
+    
+    static var backgroundAnimationColor: Color {
+        theme.isDarkMode ? Color(hex: 0x101C43) : Color(hex: 0xC0602C)
+    }
 }
 
 extension Font {

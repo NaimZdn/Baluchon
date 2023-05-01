@@ -10,12 +10,23 @@ import SwiftUI
 @main
 struct BaluchonApp: App {
     @ObservedObject var theme = Theme()
+    @State var isShowingLaunchingScreen = true
+    @State var opacity = 1.0
     
     var body: some Scene {
         WindowGroup {
-            TabBarView()
-            .preferredColorScheme(theme.isDarkMode ? .dark : .light)
-            .environmentObject(theme)
+            if isShowingLaunchingScreen {
+                LaunchScreenView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.1) {
+                            self.isShowingLaunchingScreen = false
+                        }
+                    }
+            } else {
+                TabBarView()
+                    .preferredColorScheme(theme.isDarkMode ? .dark : .light)
+                    .environmentObject(theme)
+            }
         }
     }
 }
@@ -32,7 +43,7 @@ class Theme: ObservableObject {
     
     private func updateMode() {
         let hour = Calendar.current.component(.hour, from: Date())
-        isDarkMode = hour >= 20 || hour < 6
+        isDarkMode = hour >= 21 || hour < 7
 
     }
 }
