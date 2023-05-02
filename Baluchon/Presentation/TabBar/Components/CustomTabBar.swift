@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-enum TabBar: String, CaseIterable {
-    case converter
-    case translation
-    case weather
-}
-
-
 struct CustomTabBar: View {
     @Binding var selectedTab: TabBar
     @State var present = true
