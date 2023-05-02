@@ -84,7 +84,7 @@ extension Font {
     static func fontRegular(_ size: CGFloat) -> Font {
         return Font.custom("Nexa-Regular", size: size)
     }
-        
+    
     static func fontBold(_ size: CGFloat) -> Font {
         return Font.custom("Nexa-Bold", size: size)
     }
@@ -93,14 +93,14 @@ extension Font {
         return Font.custom("Nexa-XBold", size: size)
     }
     
-   // MARK: - Default fonts
+    // MARK: - Default fonts
     
     static var defaultTertiaryText: Font {
-        return fontRegular(13)
+        fontRegular(13)
     }
     
     static var defaultSecondaryText: Font {
-        return fontBold(15)
+        fontBold(15)
     }
     
     static var defaultBody: Font {
@@ -130,35 +130,35 @@ extension Font {
     // MARK: - Widgets fonts
     
     static var widgetsHourlyHours: Font {
-        return fontXBold(13)
+        fontXBold(13)
     }
     
     static var widgetsHourlyDegree: Font {
-        return fontXBold(28)
+        fontXBold(28)
     }
     
     static var widgetsWeeklyHours: Font {
-        return fontXBold(13)
+        fontXBold(13)
     }
     
     static var widgetsWeeklyMinDegree: Font {
-        return fontXBold(30)
+        fontXBold(30)
     }
     
     static var widgetsWeeklyMaxDegree: Font {
-        return fontXBold(40)
+        fontXBold(40)
     }
     
     static var widgetsDailyHours: Font {
-        return fontXBold(13)
+        fontXBold(13)
     }
     
     static var widgetsDailyDate: Font {
-        return fontXBold(15)
+        fontXBold(15)
     }
     
     static var widgetsDailyDegree: Font {
-        return fontXBold(60)
+        fontXBold(60)
     }
 }
 
