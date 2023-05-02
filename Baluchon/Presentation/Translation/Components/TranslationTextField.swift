@@ -25,7 +25,7 @@ struct TranslationTextField: View {
                 HStack(alignment: .top) {
                     TextField("Écrivez ou collez votre texte ici...", text: $textInput, axis: .vertical)
                         .onTapGesture {
-                            viewModel.endTextEditing()
+                            endTextEditing()
                             
                         }
                         .font(.defaultBody)

@@ -46,10 +46,6 @@ class TranslationViewModel: ObservableObject {
             .assign(to: \.translatedText, on: self)
     }
     
-    func endTextEditing() {
-        UIApplication.shared.endEditing()
-    }
-    
     func copyToClipboard(text: String) -> Bool{
         let copyboard = UIPasteboard.general
         copyboard.string = text
