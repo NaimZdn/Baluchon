@@ -6,23 +6,6 @@
 //
 
 import SwiftUI
-import Lottie
-
-struct LottieView: UIViewRepresentable {
-    let animationView = LottieAnimationView()
-
-    var fileName: String
-
-    func makeUIView(context: Context) -> UIView {
-        animationView.backgroundColor = .clear
-        animationView.animation = LottieAnimation.named(fileName)
-        animationView.play()
-
-        return animationView
-    }
-
-    func updateUIView(_ uiView: UIView, context: Context) {}
-}
 
 struct LaunchScreenView: View {
     @State private var opacity: Double = 1.0
