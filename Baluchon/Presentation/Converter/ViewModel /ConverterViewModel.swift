@@ -26,7 +26,7 @@ class ConverterViewModel: ObservableObject {
             .assign(to: &$exchangeRateString)
     }
     
-    func convertAmount(from baseCurrency: String, to convertCurrency: String) {
+    func fetchExchangeRate(from baseCurrency: String, to convertCurrency: String) {
         if exchangeRates["\(baseCurrency) to \(convertCurrency)"] != nil {
             return
         }

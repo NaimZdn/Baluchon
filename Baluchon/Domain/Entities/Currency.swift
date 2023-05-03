@@ -29,5 +29,3 @@ enum Currency: String {
         }
     }
 }
-
-

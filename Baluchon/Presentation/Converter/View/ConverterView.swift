@@ -105,7 +105,7 @@ struct ConverterView: View {
         .padding(20)
         .background(Color.backgroundColor)
         .onAppear {
-            viewModel.convertAmount(from: convertFrom, to: convertTo)
+            viewModel.fetchExchangeRate(from: convertFrom, to: convertTo)
         }
         .onTapGesture {
             self.endTextEditing()

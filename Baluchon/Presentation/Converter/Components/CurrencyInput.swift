@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CurrencyInput: View {
-    @ObservedObject private var viewModel = ConverterViewModel()
+    @StateObject private var viewModel = ConverterViewModel()
     @FocusState private var amountIsFocused: Bool
     @Binding var currencyAmount: String
     
