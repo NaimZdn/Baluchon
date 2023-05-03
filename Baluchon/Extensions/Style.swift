@@ -82,15 +82,15 @@ extension Font {
     // MARK: - Fonts declaration
     
     static func fontRegular(_ size: CGFloat) -> Font {
-        return Font.custom("Nexa-Regular", size: size)
+        Font.custom("Nexa-Regular", size: size)
     }
     
     static func fontBold(_ size: CGFloat) -> Font {
-        return Font.custom("Nexa-Bold", size: size)
+        Font.custom("Nexa-Bold", size: size)
     }
     
     static func fontXBold(_ size: CGFloat) -> Font {
-        return Font.custom("Nexa-XBold", size: size)
+        Font.custom("Nexa-XBold", size: size)
     }
     
     // MARK: - Default fonts
@@ -104,27 +104,27 @@ extension Font {
     }
     
     static var defaultBody: Font {
-        return fontRegular(16)
+        fontRegular(16)
     }
     
     static var defaultButtonCaption: Font {
-        return fontRegular(18)
+        fontRegular(18)
     }
     
     static var defaultChangeAmount: Font {
-        return fontRegular(28)
+        fontRegular(28)
     }
     
     static var defaultTitle2: Font {
-        return fontXBold(20)
+        fontXBold(20)
     }
     
     static var defaultMoney: Font {
-        return fontBold(24)
+        fontBold(24)
     }
     
     static var defaultTitle1: Font {
-        return fontBold(32)
+        fontBold(32)
     }
     
     // MARK: - Widgets fonts
@@ -161,5 +161,3 @@ extension Font {
         fontXBold(60)
     }
 }
-
-

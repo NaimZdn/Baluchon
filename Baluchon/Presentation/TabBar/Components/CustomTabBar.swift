@@ -29,8 +29,7 @@ struct CustomTabBar: View {
                             .opacity(selectedTab == tab ? 1 : 0)
                             .frame(width: 5, height: 5)
                     }
-                    Spacer()
-                    
+                    Spacer()        
                 }
             }
             .padding()
@@ -40,9 +39,6 @@ struct CustomTabBar: View {
             .padding(.horizontal, 20)
             
         }
-        
-        
-        
     }
 }
 

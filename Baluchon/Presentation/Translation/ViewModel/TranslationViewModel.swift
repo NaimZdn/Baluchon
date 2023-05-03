@@ -17,7 +17,7 @@ class TranslationViewModel: ObservableObject {
         
         guard let envPath = Bundle.main.path(forResource: "Env", ofType: "plist"),
               let env = NSDictionary(contentsOfFile: envPath),
-              let apiKey = env["API_KEY"] as? String else {
+              let apiKey = env["TRANSLATION_API_KEY"] as? String else {
                   return
         }
 

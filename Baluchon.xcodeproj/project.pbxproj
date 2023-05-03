@@ -11,7 +11,7 @@
 		0823A1AB29FB1A7D000FEE61 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0823A1AA29FB1A7D000FEE61 /* Weather.swift */; };
 		08349B7D29F5ECFB00AA4C04 /* TranslationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08349B7C29F5ECFB00AA4C04 /* TranslationViewModel.swift */; };
 		08349B8129F5ED7F00AA4C04 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08349B8029F5ED7F00AA4C04 /* View.swift */; };
-		08349B8529F5EDBC00AA4C04 /* Traduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08349B8429F5EDBC00AA4C04 /* Traduction.swift */; };
+		08349B8529F5EDBC00AA4C04 /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08349B8429F5EDBC00AA4C04 /* Translation.swift */; };
 		08349B8829F5F2EA00AA4C04 /* Env.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08349B8729F5F2EA00AA4C04 /* Env.plist */; };
 		08793AFB29DBFE500024A431 /* Nexa-XBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AF829DBFE500024A431 /* Nexa-XBold.ttf */; };
 		08793AFC29DBFE500024A431 /* Nexa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08793AF929DBFE500024A431 /* Nexa-Bold.ttf */; };
@@ -69,7 +69,7 @@
 		0823A1AA29FB1A7D000FEE61 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		08349B7C29F5ECFB00AA4C04 /* TranslationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationViewModel.swift; sourceTree = "<group>"; };
 		08349B8029F5ED7F00AA4C04 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		08349B8429F5EDBC00AA4C04 /* Traduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Traduction.swift; sourceTree = "<group>"; };
+		08349B8429F5EDBC00AA4C04 /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		08349B8729F5F2EA00AA4C04 /* Env.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Env.plist; sourceTree = "<group>"; };
 		08793AF829DBFE500024A431 /* Nexa-XBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-XBold.ttf"; path = "../../../../../../../../../../Library/Fonts/Nexa-XBold.ttf"; sourceTree = "<group>"; };
 		08793AF929DBFE500024A431 /* Nexa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nexa-Bold.ttf"; path = "../../../../../../../../../../Library/Fonts/Nexa-Bold.ttf"; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		08349B8329F5EDBC00AA4C04 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				08349B8429F5EDBC00AA4C04 /* Traduction.swift */,
+				08349B8429F5EDBC00AA4C04 /* Translation.swift */,
 				08AE5E3429F6B5F8004D45A6 /* Currency.swift */,
 				0823A1AA29FB1A7D000FEE61 /* Weather.swift */,
 				08E1BC892A01840A00B20666 /* TabBar.swift */,
@@ -577,7 +577,7 @@
 				08349B7D29F5ECFB00AA4C04 /* TranslationViewModel.swift in Sources */,
 				087E32F529DB34E6008ABE98 /* Style.swift in Sources */,
 				0892490929E546440025DB33 /* WeatherCity.swift in Sources */,
-				08349B8529F5EDBC00AA4C04 /* Traduction.swift in Sources */,
+				08349B8529F5EDBC00AA4C04 /* Translation.swift in Sources */,
 				089248FF29E525320025DB33 /* ConverterView.swift in Sources */,
 				0891635929FFFDDE007D9684 /* LaunchScreenView.swift in Sources */,
 				088CD11D29E5916C0007A742 /* WidgetHourly.swift in Sources */,

@@ -30,7 +30,6 @@ struct LaunchScreenView: View {
     }
 }
 
-
 struct LaunchingScreen_Previews: PreviewProvider {
     static var previews: some View {
         LaunchScreenView()
