@@ -105,7 +105,14 @@ struct ConverterView: View {
         .padding(20)
         .background(Color.backgroundColor)
         .onAppear {
-            viewModel.fetchExchangeRate(from: convertFrom, to: convertTo)
+            viewModel.getExchangeRate(from: convertFrom, to: convertTo) { result in
+                switch result {
+                case .success:
+                    print("Sucess")
+                case .failure(let error):
+                    print("Error: \(error.errorDescription)")
+                }
+            }
         }
         .onTapGesture {
             self.endTextEditing()

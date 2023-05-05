@@ -9,8 +9,6 @@ import Foundation
 import Combine
 
 class ConverterViewModel: ObservableObject {
-    @Published var baseCurrencyCode = ""
-    @Published var convertCurrencyCode = ""
     @Published var exchangeRate = 0.0
     @Published var exchangeRateString = ""
     @Published var amountConverted = ""
@@ -19,6 +17,7 @@ class ConverterViewModel: ObservableObject {
     
     private var cancellable: AnyCancellable?
     private var currencyData: CurrencyResponse = .init(data: [:])
+    private var requestError: ConverterError? = nil
     
     init() {
         $exchangeRate
@@ -26,46 +25,83 @@ class ConverterViewModel: ObservableObject {
             .assign(to: &$exchangeRateString)
     }
     
-    func fetchExchangeRate(from baseCurrency: String, to convertCurrency: String) {
-        if exchangeRates["\(baseCurrency) to \(convertCurrency)"] != nil {
-            return
-        }
-        
-        guard let envPath = Bundle.main.path(forResource: "Env", ofType: "plist"),
+    private func getAPIKey(fromFileNamed fileName: String) throws -> String {
+        guard let envPath = Bundle.main.path(forResource: fileName, ofType: "plist"),
               let env = NSDictionary(contentsOfFile: envPath),
               let apiKey = env["CONVERTER_API_KEY"] as? String else {
-            return
+            throw ConverterError.apiKeyNotFound
+        }
+        return apiKey
+    }
+    
+    func getExchangeRate(from baseCurrency: String, to convertCurrency: String, apiKeyFileName: String = "Env", completion: @escaping (Result<CurrencyResponse, ConverterError>) -> Void) {
+        
+        if exchangeRates["\(baseCurrency) to \(convertCurrency)"] != nil {
+            return completion(.failure(ConverterError.exchangeRateAlreadyAvailable))
         }
         
-        let url = URL(string: "https://api.currencyapi.com/v3/latest?apikey=\(apiKey)&base_currency=\(baseCurrency)&currencies=\(convertCurrency)")!
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "GET"
-        
-        cancellable = URLSession.shared.dataTaskPublisher(for: request)
-            .map(\.data)
-            .decode(type: CurrencyResponse.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("Error: \(error)")
+        do {
+            let apiKey = try getAPIKey(fromFileNamed: apiKeyFileName)
+            
+            let url = URL(string: "https://api.currencyapi.com/v3/latest?apikey=\(apiKey)&base_currency=\(baseCurrency)&currencies=\(convertCurrency)")!
+            var request = URLRequest(url: url)
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "GET"
+            
+            cancellable = URLSession.shared.dataTaskPublisher(for: request)
+                .tryMap { (data, response) -> Data in
+                    guard let httpResponse = response as? HTTPURLResponse else {
+                        throw ConverterError.networkError
+                    }
+                    switch httpResponse.statusCode {
+                    case 200:
+                        return data
+                    case 401:
+                        throw ConverterError.unauthorizedAccess
+                    case 422:
+                        throw ConverterError.invalidCurrencyParameters
+                    default:
+                        throw ConverterError.networkError
+                    }
                 }
-            }, receiveValue: { response in
-                if let convertedValue = response.data[convertCurrency]?.value {
-                    self.exchangeRates["\(baseCurrency) to \(convertCurrency)"] = String(format: "%.2f",convertedValue)
-                    self.exchangeRates["\(convertCurrency) to \(baseCurrency)"] = String(format: "%.2f",1 / convertedValue)
-                    
-                    self.currencyData = response
-                    self.baseCurrencyCode = baseCurrency
-                    self.convertCurrencyCode = response.data[convertCurrency]?.code ?? ""
-                    self.exchangeRate = convertedValue
-                    self.exchangeRateAvailable = true
-
+                .mapError { error -> ConverterError in
+                    if let ConverterError = error as? ConverterError {
+                        self.requestError = ConverterError
+                        return self.requestError!
+                    } else {
+                        return ConverterError.networkError
+                    }
                 }
-            })
+                .decode(type: CurrencyResponse.self, decoder: JSONDecoder())
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print("Error: \(error)")
+                        
+                    }
+                }, receiveValue: { response in
+                    if let convertedValue = response.data[convertCurrency]?.value {
+                        self.exchangeRates["\(baseCurrency) to \(convertCurrency)"] = String(format: "%.2f",convertedValue)
+                        self.exchangeRates["\(convertCurrency) to \(baseCurrency)"] = String(format: "%.2f",1 / convertedValue)
+                        
+                        self.currencyData = response
+                        self.exchangeRate = convertedValue
+                        self.exchangeRateAvailable = true               
+                    }
+                })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if self.requestError != nil {
+                    completion(.failure(self.requestError!))
+                } else {
+                    completion(.success(self.currencyData))
+                }
+            }
+        } catch {
+            completion(.failure(error as! ConverterError))
+        }
     }
     
     func calculConvertedAmount(amount: String, rate: String) -> String{
