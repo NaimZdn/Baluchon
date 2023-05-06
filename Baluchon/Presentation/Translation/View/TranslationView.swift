@@ -65,7 +65,15 @@ struct TranslationView: View {
             self.endTextEditing()
         }
         .onReceive(Just(textToTranslate)) { text in
-            viewModel.translateText(text, source: isReversed ? "en" : "fr", target: isReversed ? "fr" : "en")
+            viewModel.translateText(text, source: isReversed ? "en" : "fr", target: isReversed ? "fr" : "en") { result in
+                switch result {
+                case .success:
+                    print("Success")
+                case .failure(let error):
+                    print("Error: \(error.errorDescription)")
+                }
+                
+            }
             
             if viewModel.translatedText.isEmpty {
                 isDisabled = true
