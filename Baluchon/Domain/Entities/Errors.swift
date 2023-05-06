@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum ConverterError : Error {
+enum Errors : Error {
     case apiKeyNotFound
     case exchangeRateAlreadyAvailable
-    case invalidCurrencyParameters
+    case invalidParameters
     case unauthorizedAccess
     case networkError
     
@@ -20,8 +20,8 @@ enum ConverterError : Error {
             return "Your APIKey was not found"
         case .exchangeRateAlreadyAvailable:
             return "You already have the exchange rate for this currency"
-        case .invalidCurrencyParameters:
-            return "Your base currency or convert currency is invalid"
+        case .invalidParameters:
+            return "One of your parameters is invalid"
         case .unauthorizedAccess:
             return "Access denied, please check your API Key"
         case .networkError:

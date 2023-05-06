@@ -9,7 +9,6 @@ import XCTest
 import Combine
 @testable import Baluchon
 
-
 class ConverterTests: XCTestCase {
     
     var converter: ConverterViewModel!
@@ -101,7 +100,7 @@ class ConverterTests: XCTestCase {
             case .success:
                 XCTFail("Expected error but got success")
             case .failure(let error):
-                XCTAssertEqual(error.errorDescription, "Your base currency or convert currency is invalid")
+                XCTAssertEqual(error.errorDescription, "One of your parameters is invalid")
                 expectation.fulfill()
             }
         }

@@ -17,7 +17,7 @@ class ConverterViewModel: ObservableObject {
     
     private var cancellable: AnyCancellable?
     private var currencyData: CurrencyResponse = .init(data: [:])
-    private var requestError: ConverterError? = nil
+    private var requestError: Errors? = nil
     
     init() {
         $exchangeRate
@@ -29,15 +29,15 @@ class ConverterViewModel: ObservableObject {
         guard let envPath = Bundle.main.path(forResource: fileName, ofType: "plist"),
               let env = NSDictionary(contentsOfFile: envPath),
               let apiKey = env["CONVERTER_API_KEY"] as? String else {
-            throw ConverterError.apiKeyNotFound
+            throw Errors.apiKeyNotFound
         }
         return apiKey
     }
     
-    func getExchangeRate(from baseCurrency: String, to convertCurrency: String, apiKeyFileName: String = "Env", completion: @escaping (Result<CurrencyResponse, ConverterError>) -> Void) {
+    func getExchangeRate(from baseCurrency: String, to convertCurrency: String, apiKeyFileName: String = "Env", completion: @escaping (Result<CurrencyResponse, Errors>) -> Void) {
         
         if exchangeRates["\(baseCurrency) to \(convertCurrency)"] != nil {
-            return completion(.failure(ConverterError.exchangeRateAlreadyAvailable))
+            return completion(.failure(Errors.exchangeRateAlreadyAvailable))
         }
         
         do {
@@ -51,25 +51,25 @@ class ConverterViewModel: ObservableObject {
             cancellable = URLSession.shared.dataTaskPublisher(for: request)
                 .tryMap { (data, response) -> Data in
                     guard let httpResponse = response as? HTTPURLResponse else {
-                        throw ConverterError.networkError
+                        throw Errors.networkError
                     }
                     switch httpResponse.statusCode {
                     case 200:
                         return data
                     case 401:
-                        throw ConverterError.unauthorizedAccess
+                        throw Errors.unauthorizedAccess
                     case 422:
-                        throw ConverterError.invalidCurrencyParameters
+                        throw Errors.invalidParameters
                     default:
-                        throw ConverterError.networkError
+                        throw Errors.networkError
                     }
                 }
-                .mapError { error -> ConverterError in
-                    if let ConverterError = error as? ConverterError {
-                        self.requestError = ConverterError
+                .mapError { error -> Errors in
+                    if let Errors = error as? Errors {
+                        self.requestError = Errors
                         return self.requestError!
                     } else {
-                        return ConverterError.networkError
+                        return Errors.networkError
                     }
                 }
                 .decode(type: CurrencyResponse.self, decoder: JSONDecoder())
@@ -100,7 +100,7 @@ class ConverterViewModel: ObservableObject {
                 }
             }
         } catch {
-            completion(.failure(error as! ConverterError))
+            completion(.failure(error as! Errors))
         }
     }
     
