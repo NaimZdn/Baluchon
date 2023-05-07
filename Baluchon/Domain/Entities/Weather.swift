@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - API Data struct
 
-struct Welcome: Codable {
+struct WeatherResponse: Codable {
     let location: Location
     let current: Current
     let forecast: Forecast

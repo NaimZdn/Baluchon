@@ -108,7 +108,7 @@ struct ConverterView: View {
             viewModel.getExchangeRate(from: convertFrom, to: convertTo) { result in
                 switch result {
                 case .success:
-                    print("Sucess")
+                    print("Success")
                 case .failure(let error):
                     print("Error: \(error.errorDescription)")
                 }
