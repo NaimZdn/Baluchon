@@ -24,44 +24,85 @@ class WeatherViewModel: ObservableObject {
     @Published var localTimeForWidget = ""
 
     private var cancellable: AnyCancellable?
+    private var requestError: Errors? = nil 
     
-    func getWeather(for location: String, completion: @escaping (Result<Welcome, Error>) -> Void) {
-        guard let envPath = Bundle.main.path(forResource: "Env", ofType: "plist"),
+    private func getAPIKey(fromFileNamed fileName: String) throws -> String {
+        guard let envPath = Bundle.main.path(forResource: fileName, ofType: "plist"),
               let env = NSDictionary(contentsOfFile: envPath),
               let apiKey = env["WEATHER_API_KEY"] as? String else {
-            return
+            throw Errors.apiKeyNotFound
+        }
+        return apiKey
+    }
+    
+    func getWeather(for location: String, apiKeyFileName: String = "Env", completion: @escaping (Result<WeatherResponse, Errors>) -> Void) {
+        
+        do {
+            let apiKey = try getAPIKey(fromFileNamed: apiKeyFileName)
+            
+            let url = URL(string: "https://api.weatherapi.com/v1/forecast.json?key=\(apiKey)&q=\(location)&days=7")!
+            var request = URLRequest(url: url)
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "GET"
+            
+            cancellable = URLSession.shared.dataTaskPublisher(for: request)
+                .tryMap{ (data, response) -> Data in
+                    guard let httpResponse = response as? HTTPURLResponse else {
+                        throw Errors.networkError
+                    }
+                    switch httpResponse.statusCode {
+                    case 200:
+                        return data
+                    case 400:
+                        throw Errors.invalidParameters
+                    case 403:
+                        throw Errors.unauthorizedAccess
+                    default:
+                        throw Errors.networkError
+                    }
+                }
+                .mapError { error -> Errors in
+                    if let Errors = error as? Errors {
+                        self.requestError = Errors
+                        return self.requestError!
+                    } else {
+                        return Errors.networkError
+                    }
+                }
+                .decode(type: WeatherResponse.self, decoder: JSONDecoder())
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print("Error: \(error)")
+                    }
+                }, receiveValue: { response in
+                    self.location = response.location.name
+                    self.country = response.location.country
+                    self.icon = response.current.condition.text
+                    self.temperature = response.current.tempC
+                    self.localTime = self.convertStringToDate(from: response.location.localtime)
+                    self.hour = self.convertStringToHour(from: response.current.lastUpdated)
+                    self.sunset = response.forecast.forecastday[0].astro.sunset
+                    self.sunrise = response.forecast.forecastday[0].astro.sunrise
+                    self.dayList = Array(response.forecast.forecastday.dropFirst())
+                    self.colorMode = self.changeColorMode()
+                    
+                    completion(.success(response))
+                    
+                })
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if self.requestError != nil {
+                    completion(.failure(self.requestError!))
+                }
+            }
+        } catch {
+            completion(.failure(error as! Errors))
         }
         
-        let url = URL(string: "https://api.weatherapi.com/v1/forecast.json?key=\(apiKey)&q=\(location)&days=7")!
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "GET"
-        
-        cancellable = URLSession.shared.dataTaskPublisher(for: request)
-            .map(\.data)
-            .decode(type: Welcome.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("Error: \(error)")
-                }
-            }, receiveValue: { response in
-                completion(.success(response))
-                self.location = response.location.name
-                self.country = response.location.country
-                self.icon = response.current.condition.text
-                self.temperature = response.current.tempC
-                self.localTime = self.convertStringToDate(from: response.location.localtime)
-                self.hour = self.convertStringToHour(from: response.current.lastUpdated)
-                self.sunset = response.forecast.forecastday[0].astro.sunset
-                self.sunrise = response.forecast.forecastday[0].astro.sunrise
-                self.dayList = Array(response.forecast.forecastday.dropFirst())
-                self.colorMode = self.changeColorMode()
-                                    
-            })
     }
     
     func convertStringToDate(from string: String) -> String {
