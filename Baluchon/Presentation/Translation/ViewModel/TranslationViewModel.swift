@@ -10,6 +10,7 @@ import Combine
 
 class TranslationViewModel: ObservableObject {
     @Published var translatedText = ""
+    @Published var isLoading = false
     
     private var translationData: TranslationResponse = .init(data: .init(translations: []) )
     private var cancellable: AnyCancellable?
@@ -25,7 +26,9 @@ class TranslationViewModel: ObservableObject {
     }
     
     func translateText(_ text: String, source: String, target: String, apiKeyFileName: String = "Env", completion: @escaping (Result<TranslationResponse, Errors>) -> Void) {
-    
+        
+    isLoading = true
+        
         do {
             let apiKey = try getAPIKey(fromFileNamed: apiKeyFileName)
 
@@ -79,7 +82,7 @@ class TranslationViewModel: ObservableObject {
                 }, receiveValue: { response in
                     self.translationData = response
                     self.translatedText = response.data.translations.first?.translatedText ?? ""
-                    print(self.translatedText)
+                    self.isLoading = false
                 })
                
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

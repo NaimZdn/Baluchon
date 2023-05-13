@@ -15,6 +15,8 @@ class ConverterViewModel: ObservableObject {
     @Published var exchangeRateAvailable = false
     @Published var exchangeRates: [String: String] = [:]
     
+    @Published var isLoading = false
+    
     private var cancellable: AnyCancellable?
     private var currencyData: CurrencyResponse = .init(data: [:])
     private var requestError: Errors? = nil
@@ -35,8 +37,10 @@ class ConverterViewModel: ObservableObject {
     }
     
     func getExchangeRate(from baseCurrency: String, to convertCurrency: String, apiKeyFileName: String = "Env", completion: @escaping (Result<CurrencyResponse, Errors>) -> Void) {
+        isLoading = true
         
         if exchangeRates["\(baseCurrency) to \(convertCurrency)"] != nil {
+            isLoading = false
             return completion(.failure(Errors.exchangeRateAlreadyAvailable))
         }
         
@@ -89,7 +93,7 @@ class ConverterViewModel: ObservableObject {
                         
                         self.currencyData = response
                         self.exchangeRate = convertedValue
-                        self.exchangeRateAvailable = true               
+                        self.exchangeRateAvailable = true
                     }
                 })
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -97,6 +101,7 @@ class ConverterViewModel: ObservableObject {
                     completion(.failure(self.requestError!))
                 } else {
                     completion(.success(self.currencyData))
+                    self.isLoading = false
                 }
             }
         } catch {

@@ -12,6 +12,8 @@ struct WeatherView: View {
     private let cities = CurrentLocation.allCases
     @State private var selectedTabIndex = 0
     
+    @State var isLoading = true
+    
     var body: some View {
         VStack {
             TabView(selection: $selectedTabIndex) {
@@ -31,6 +33,7 @@ struct WeatherView: View {
                         .frame(width: 10, height: 10)
                 }
             }
+            
         }
         .background(Color.backgroundColor)
     }

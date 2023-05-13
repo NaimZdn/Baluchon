@@ -22,6 +22,8 @@ class WeatherViewModel: ObservableObject {
     @Published var colorMode = false
     @Published var widgetIcon = ""
     @Published var localTimeForWidget = ""
+    
+    @Published var isLoading = false
 
     private var cancellable: AnyCancellable?
     private var requestError: Errors? = nil 
@@ -36,6 +38,7 @@ class WeatherViewModel: ObservableObject {
     }
     
     func getWeather(for location: String, apiKeyFileName: String = "Env", completion: @escaping (Result<WeatherResponse, Errors>) -> Void) {
+      isLoading = true
         
         do {
             let apiKey = try getAPIKey(fromFileNamed: apiKeyFileName)
@@ -91,12 +94,14 @@ class WeatherViewModel: ObservableObject {
                     self.colorMode = self.changeColorMode()
                     
                     completion(.success(response))
-                    
+                  
                 })
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 if self.requestError != nil {
                     completion(.failure(self.requestError!))
+                } else {
+                    self.isLoading = false
                 }
             }
         } catch {
