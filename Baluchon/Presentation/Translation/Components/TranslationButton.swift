@@ -20,7 +20,7 @@ struct TranslationButton: View {
             Text(text)
                 .font(.defaultSecondaryText)
                 .foregroundColor(.textColor)
-                .baselineOffset(-7)
+                .baselineOffset(-5)
         }
         .frame(minWidth: 120, alignment: .leading)
         .padding(.horizontal, 15)

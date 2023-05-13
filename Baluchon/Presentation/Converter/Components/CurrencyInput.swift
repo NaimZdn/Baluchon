@@ -28,32 +28,59 @@ struct CurrencyInput: View {
                 
             }
             HStack() {
-                TextField("", text: $currencyAmount, prompt: Text("0.00").foregroundColor(.placeholderColor))
-                    .onChange(of: currencyAmount, perform: { input in
-                        currencyAmount = viewModel.validateCurrencyInput(input)
-                    })
-                    .disabled(isDisabled)
-                    .keyboardType(.decimalPad)
-                    .font(.defaultChangeAmount)
-                    .foregroundColor(.textColor)
-                    .multilineTextAlignment(.trailing)
-                    .baselineOffset(-4)
-                    .toolbar {
-                        if !isDisabled {
+                if #available(iOS 16.0, *) {
+                    TextField("", text: $currencyAmount, prompt: Text("0.00").foregroundColor(.placeholderColor))
+                        .onChange(of: currencyAmount, perform: { input in
+                            currencyAmount = viewModel.validateCurrencyInput(input)
+                        })
+                        .disabled(isDisabled)
+                        .keyboardType(.decimalPad)
+                        .font(.defaultChangeAmount)
+                        .foregroundColor(.textColor)
+                        .multilineTextAlignment(.trailing)
+                        .baselineOffset(-4)
+                        .toolbar {
+                            if !isDisabled {
+                                ToolbarItemGroup(placement: .keyboard) {
+                                    Spacer()
+                                    Button {
+                                        amountIsFocused = false
+                                        endTextEditing()
+                                    } label: {
+                                        Image(systemName: "keyboard.chevron.compact.down")
+                                            .foregroundColor(Color.iconColor)
+                                        
+                                    }
+                                }
+                                
+                            }
+                        }
+                } else {
+                    TextField("", text: $currencyAmount, prompt: Text("0.00").foregroundColor(.placeholderColor))
+                        .onChange(of: currencyAmount, perform: { input in
+                            currencyAmount = viewModel.validateCurrencyInput(input)
+                        })
+                        .disabled(isDisabled)
+                        .keyboardType(.decimalPad)
+                        .font(.defaultChangeAmount)
+                        .foregroundColor(.textColor)
+                        .multilineTextAlignment(.trailing)
+                        .padding(.bottom, -4)
+                        .toolbar {
                             ToolbarItemGroup(placement: .keyboard) {
                                 Spacer()
                                 Button {
                                     amountIsFocused = false
-                                    endTextEditing()
+                                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                                 } label: {
                                     Image(systemName: "keyboard.chevron.compact.down")
                                         .foregroundColor(Color.iconColor)
-                                    
                                 }
+                                .disabled(isDisabled)
                             }
-                            
                         }
-                    }
+                    
+                }
             }
         }
     }

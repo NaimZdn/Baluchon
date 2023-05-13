@@ -11,16 +11,30 @@ struct CurrencyButton: View {
     var currencyIcon: String
     
     var body: some View {
-        Text(currencyIcon)
-            .font(.defaultMoney)
-            .foregroundColor(.primaryColor)
-            .frame(width: 50, height: 50)
-            .background(
-                Color.secondaryColor,
-                in: RoundedRectangle(
-                    cornerRadius: 15,
-                    style: .continuous))
-            .baselineOffset(-4)
+        if #available(iOS 16.0, *) {
+            Text(currencyIcon)
+                .font(.defaultMoney)
+                .foregroundColor(.primaryColor)
+                .frame(width: 50, height: 50)
+                .background(
+                    Color.secondaryColor,
+                    in: RoundedRectangle(
+                        cornerRadius: 15,
+                        style: .continuous))
+                .baselineOffset(-4)
+        } else {
+            Text(currencyIcon)
+                .font(.defaultMoney)
+                .foregroundColor(.primaryColor)
+                .frame(width: 50, height: 50)
+                .padding(.bottom, -4)
+                .background(
+                    Color.secondaryColor,
+                    in: RoundedRectangle(
+                        cornerRadius: 15,
+                        style: .continuous))
+            
+        }
     }
 }
 

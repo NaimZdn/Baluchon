@@ -28,79 +28,101 @@ struct ConverterView: View {
 
     var body: some View {
         VStack {
-            VStack(spacing: 0) {
-                Text("Money Converter")
-                    .font(.defaultTitle1)
-                    .foregroundColor(.textColor)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.bottom, 39)
+            if viewModel.isLoading {
+                Color.backgroundColor
+                    .ignoresSafeArea()
+                ProgressView()
+                    .frame(width: 400, height: 650, alignment: .center)
+                    .scaleEffect(2) 
                 
-                CurrencyInput(currencyAmount: $amount, isDisabled: false, currencyIcon: isReversed ? Currency.dollar.rawValue : Currency.euro.rawValue, currencyText: convertFrom)
-                    .onChange(of: amount) { newValue in
-                        let filteredInput = viewModel.validateCurrencyInput(newValue)
-                        amount = filteredInput
-                       
-                        if !amount.isEmpty {
-                            convertedAmount = viewModel.calculConvertedAmount(amount: amount, rate: isValuesStrored ? viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]! : viewModel.exchangeRateString)
-                           
+            } else {
+                VStack(spacing: 0) {
+                    Text("Money Converter")
+                        .font(.defaultTitle1)
+                        .foregroundColor(.textColor)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.bottom, 39)
+                    
+                    CurrencyInput(currencyAmount: $amount, isDisabled: false, currencyIcon: isReversed ? Currency.dollar.rawValue : Currency.euro.rawValue, currencyText: convertFrom)
+                        .onChange(of: amount) { newValue in
+                            let filteredInput = viewModel.validateCurrencyInput(newValue)
+                            amount = filteredInput
+                            
+                            if !amount.isEmpty {
+                                convertedAmount = viewModel.calculConvertedAmount(amount: amount, rate: isValuesStrored ? viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]! : viewModel.exchangeRateString)
+                                
+                            }
                         }
-                    }
                     
-                
-                HStack(spacing: 0) {
-                    Circle()
-                        .foregroundColor(.primaryColor)
-                        .frame(minWidth: 6, maxWidth: 6, minHeight: 6, maxHeight: 6)
                     
-                    Rectangle()
-                        .cornerRadius(10)
-                        .frame(maxWidth: .infinity, maxHeight: 2)
-                        .foregroundColor(Color.separationColor)
-                    
-                    Button {
-                        isReversed.toggle()
-                        if !isValuesStrored {
-                            isValuesStrored = true
+                    HStack(spacing: 0) {
+                        Circle()
+                            .foregroundColor(.primaryColor)
+                            .frame(minWidth: 6, maxWidth: 6, minHeight: 6, maxHeight: 6)
+                        
+                        Rectangle()
+                            .cornerRadius(10)
+                            .frame(maxWidth: .infinity, maxHeight: 2)
+                            .foregroundColor(Color.separationColor)
+                        
+                        Button {
+                            isReversed.toggle()
+                            if !isValuesStrored {
+                                isValuesStrored = true
+                            }
+                            
+                            convertedAmount = viewModel.calculConvertedAmount(amount: amount, rate: viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]!)
+                            
+                            
+                        } label: {
+                            Image(systemName: "arrow.up.arrow.down")
+                                .font(.system(size: 20))
+                                .foregroundColor(.iconColor)
+                                .padding(.horizontal, 5)
+                            
                         }
                         
-                       convertedAmount = viewModel.calculConvertedAmount(amount: amount, rate: viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]!)
+                        Rectangle()
+                            .cornerRadius(10)
+                            .frame(maxWidth: .infinity, maxHeight: 2)
+                            .foregroundColor(Color.separationColor)
                         
-
-                    } label: {
-                        Image(systemName: "arrow.up.arrow.down")
-                            .font(.system(size: 20))
-                            .foregroundColor(.iconColor)
-                            .padding(.horizontal, 5)
+                        Circle()
+                            .foregroundColor(.primaryColor)
+                            .frame(minWidth: 6, maxWidth: 6, minHeight: 6, maxHeight: 6)
                         
                     }
-    
-                    Rectangle()
-                        .cornerRadius(10)
-                        .frame(maxWidth: .infinity, maxHeight: 2)
-                        .foregroundColor(Color.separationColor)
+                    .padding(.vertical, 20)
                     
-                    Circle()
-                        .foregroundColor(.primaryColor)
-                        .frame(minWidth: 6, maxWidth: 6, minHeight: 6, maxHeight: 6)
-                    
+                    CurrencyInput(currencyAmount: $convertedAmount, isDisabled: true, currencyIcon: isReversed ? Currency.euro.rawValue : Currency.dollar.rawValue, currencyText: convertTo)
                 }
-                .padding(.vertical, 20)
                 
-                CurrencyInput(currencyAmount: $convertedAmount, isDisabled: true, currencyIcon: isReversed ? Currency.euro.rawValue : Currency.dollar.rawValue, currencyText: convertTo)
-            }
-            
-            HStack{
+                HStack{
+                    Spacer()
+                    
+                    if #available(iOS 16.0, *) {
+                        Text("1 \(convertFrom) = \(isValuesStrored ? viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]! : viewModel.exchangeRateString) \(convertTo)")
+                            .font(.defaultBody)
+                            .fontWeight(.bold)
+                            .foregroundColor(.secondaryColor)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(Color.primaryColor, in:RoundedRectangle(cornerRadius: 10, style: .continuous))
+                            .baselineOffset(-2)
+                    } else {
+                        Text("1 \(convertFrom) = \(isValuesStrored ? viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]! : viewModel.exchangeRateString) \(convertTo)")
+                            .font(.defaultBody)
+                            .fontWeight(.bold)
+                            .foregroundColor(.secondaryColor)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .padding(.bottom, -2)
+                            .background(Color.primaryColor, in:RoundedRectangle(cornerRadius: 10, style: .continuous))
+                    }       
+                }
                 Spacer()
-                Text("1 \(convertFrom) = \(isValuesStrored ? viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]! : viewModel.exchangeRateString) \(convertTo)")
-                    .font(.defaultBody)
-                    .fontWeight(.bold)
-                    .foregroundColor(.secondaryColor)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(Color.primaryColor, in:RoundedRectangle(cornerRadius: 10, style: .continuous))
-                    .baselineOffset(-2)
+                
             }
-            Spacer()
         }
         .padding(20)
         .background(Color.backgroundColor)
@@ -110,7 +132,8 @@ struct ConverterView: View {
                 case .success:
                     print("Success")
                 case .failure(let error):
-                    print("Error: \(error.errorDescription)")
+                    print("Voici l'erreur weather : \(error)")
+                   // print("Error: \(error.errorDescription)")
                 }
             }
         }
@@ -120,7 +143,7 @@ struct ConverterView: View {
     }
 }
 
-
+@available(iOS 16.0, *)
 struct ConverterView_Previews: PreviewProvider {
     static var previews: some View {
         ConverterView()

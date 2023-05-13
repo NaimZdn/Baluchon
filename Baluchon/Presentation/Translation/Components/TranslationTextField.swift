@@ -23,27 +23,51 @@ struct TranslationTextField: View {
         VStack(spacing: 20) {
             VStack {
                 HStack(alignment: .top) {
-                    TextField("Écrivez ou collez votre texte ici...", text: $textInput, axis: .vertical)
-                        .onTapGesture {
-                            endTextEditing()
-                            
-                        }
-                        .font(.defaultBody)
-                        .focused($nameIsFocused)
-                        .toolbar {
-                            if !isDisabled {
+                    if #available(iOS 16.0, *) {
+                        TextField("Écrivez ou collez votre texte ici...", text: $textInput, axis: .vertical)
+                            .onTapGesture {
+                                endTextEditing()
+                                
+                            }
+                            .font(.defaultBody)
+                            .focused($nameIsFocused)
+                            .toolbar {
+                                if !isDisabled {
+                                    ToolbarItemGroup(placement: .keyboard) {
+                                        Spacer()
+                                        Button {
+                                            nameIsFocused = false
+                                            endTextEditing()
+                                        } label: {
+                                            Image(systemName: "keyboard.chevron.compact.down")
+                                                .foregroundColor(Color.iconColor)
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                    } else {
+                        TextField("Écrivez ou collez votre texte ici...", text: $textInput)
+                            .onTapGesture {
+                                endTextEditing()
+                                
+                            }
+                            .disabled(isDisabled)
+                            .font(.defaultBody)
+                            .focused($nameIsFocused)
+                            .toolbar {
                                 ToolbarItemGroup(placement: .keyboard) {
                                     Spacer()
                                     Button {
                                         nameIsFocused = false
+                                        endTextEditing()
                                     } label: {
                                         Image(systemName: "keyboard.chevron.compact.down")
                                             .foregroundColor(Color.iconColor)
-                                        
                                     }
                                 }
                             }
-                        }
+                    }
                     
                     if !textInput.isEmpty && !isDisabled {
                         Button {

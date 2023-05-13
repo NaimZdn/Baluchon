@@ -8,12 +8,15 @@
 import SwiftUI
 import Combine
 
+
 struct TranslationView: View {
     @ObservedObject var viewModel = TranslationViewModel()
     @State private var isReversed = false
     @State private var textToTranslate = ""
     @State private var translatedString = ""
     @State private var isDisabled = true
+    
+    @State private var previousText = ""
     
     private var englishId: String {
         isReversed ? "en" : "fr"
@@ -57,6 +60,7 @@ struct TranslationView: View {
                 
                 if !isDisabled {
                     TranslationTextField(textInput: $viewModel.translatedText, isDisabled: true)
+                    
                 }
             }
             Spacer()
@@ -64,26 +68,34 @@ struct TranslationView: View {
         .onTapGesture {
             self.endTextEditing()
         }
-        .onReceive(Just(textToTranslate)) { text in
-            viewModel.translateText(text, source: isReversed ? "en" : "fr", target: isReversed ? "fr" : "en") { result in
-                switch result {
-                case .success:
-                    print("Success")
-                case .failure(let error):
-                    print("Error: \(error.errorDescription)")
-                }
-                
+        .onReceive(Just(textToTranslate)) { newValue in
+            guard newValue != previousText else {
+                return
             }
             
-            if viewModel.translatedText.isEmpty {
+            previousText = newValue
+            
+            viewModel.translateText(newValue, source: isReversed ? "en" : "fr", target: isReversed ? "fr" : "en") { result in
+                switch result {
+                case .success:
+                    print("Coucou")
+                case .failure(let error):
+                    print("Voici l'erreur translation : \(error)")
+                    //print("Error: \(error.errorDescription)")
+                }
+            }
+            
+            if newValue.isEmpty {
                 isDisabled = true
             } else {
                 isDisabled = false
             }
+            
         }
         .background(Color.backgroundColor)
     }
 }
+
 
 
 struct TranslationView_Previews: PreviewProvider {
