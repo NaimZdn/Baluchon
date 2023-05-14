@@ -25,7 +25,7 @@ enum Errors : Error {
         case .unauthorizedAccess:
             return "Access denied, please check your API Key"
         case .networkError:
-            return ""
+            return "We can't load data, please check your connection"
         }
     }
 }
