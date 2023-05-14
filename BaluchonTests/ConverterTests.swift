@@ -12,6 +12,7 @@ import Combine
 class ConverterTests: XCTestCase {
     
     var converter: ConverterViewModel!
+    var converterNoConnection: ConverterViewModel!
     var cancellables = Set<AnyCancellable>()
     var envPlistPath: String!
     var originalEnvPlist: NSDictionary!
@@ -19,6 +20,7 @@ class ConverterTests: XCTestCase {
     override func setUp() {
         super.setUp()
         converter = ConverterViewModel()
+        converterNoConnection = ConverterViewModel(connectionManager: NoConnectionManager())
         
         let fileManager = FileManager.default
         envPlistPath = Bundle.main.path(forResource: "Env", ofType: "plist")!
@@ -130,6 +132,37 @@ class ConverterTests: XCTestCase {
             }
         }
         wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGivenGetExchangeRate_WhenConnectionIsCut_ThenPrintingError() {
+        converterNoConnection.getExchangeRate(from: "EUR", to: "USD") { result in
+            switch result {
+            case .success(_):
+                print("Success")
+            case .failure(let error):
+                XCTAssertEqual(error.errorDescription, "We can't load data, please check your connection")
+            }
+        }
+    }
+    
+    func testGivenGetExchangeRate_WhenTryingToParseData_ThenReceiveExchangeRate() throws {
+        guard let filePath = Bundle(for: type(of: self)).path(forResource: "CurrencyData", ofType: "json") else {
+            XCTFail("JSON file not found.")
+            return
+        }
+        
+        let jsonData = try Data(contentsOf: URL(fileURLWithPath: filePath))
+        
+        do {
+            let decoder = JSONDecoder()
+            let currency = try decoder.decode(CurrencyResponse.self, from: jsonData)
+            
+            XCTAssertEqual(currency.data["USD"]!.code, "USD")
+            XCTAssertEqual(currency.data["USD"]!.value, 1.093971)
+            
+        } catch {
+            XCTFail("Error parsing JSON: \(error)")
+        }
     }
    
     func testGivenConvertedAmount_WhenHavingAmountAndRate_ThenPrintingConvertedAmountInStringWithTwoNumberAfterTheDot() {
