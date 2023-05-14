@@ -15,13 +15,21 @@ class ConverterViewModel: ObservableObject {
     @Published var exchangeRateAvailable = false
     @Published var exchangeRates: [String: String] = [:]
     
-    @Published var isLoading = false
+    @Published var isLoading = true
+    
+    @Published var progress: Double = 0.0
+    @Published var isProgressComplete = false
+    
+    private var isProgressDurationExceeded = false
     
     private var cancellable: AnyCancellable?
     private var currencyData: CurrencyResponse = .init(data: [:])
     private var requestError: Errors? = nil
+    private var connectionManager: ConnectionManager
     
-    init() {
+    init(connectionManager: ConnectionManager = RealConnectionManager()) {
+        self.connectionManager = connectionManager
+        
         $exchangeRate
             .map { String(format: "%.2f", $0) }
             .assign(to: &$exchangeRateString)
@@ -68,7 +76,7 @@ class ConverterViewModel: ObservableObject {
                         throw Errors.networkError
                     }
                 }
-                .mapError { error -> Errors in
+                .mapError { error -> Error in
                     if let Errors = error as? Errors {
                         self.requestError = Errors
                         return self.requestError!
@@ -94,14 +102,16 @@ class ConverterViewModel: ObservableObject {
                         self.currencyData = response
                         self.exchangeRate = convertedValue
                         self.exchangeRateAvailable = true
+                        self.isLoading = false
+                        
+                        completion(.success(self.currencyData))
                     }
                 })
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 if self.requestError != nil {
                     completion(.failure(self.requestError!))
                 } else {
-                    completion(.success(self.currencyData))
-                    self.isLoading = false
+                    completion(.failure(Errors.networkError))
                 }
             }
         } catch {
