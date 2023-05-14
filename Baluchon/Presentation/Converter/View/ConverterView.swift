@@ -18,6 +18,9 @@ struct ConverterView: View {
     @State private var convertCurrency = ""
     @State private var convertedAmount = ""
     
+    @State private var isProgressDurationExceeded = false
+    @State private var isNetworkError = false
+    
     private var convertFrom : String {
         isReversed ? Currency.dollar.currency: Currency.euro.currency
     }
@@ -29,11 +32,22 @@ struct ConverterView: View {
     var body: some View {
         VStack {
             if viewModel.isLoading {
-                Color.backgroundColor
-                    .ignoresSafeArea()
-                ProgressView()
-                    .frame(width: 400, height: 650, alignment: .center)
-                    .scaleEffect(2) 
+                VStack {
+                    Spacer()
+                    
+                    ProgressView()
+                        .scaleEffect(2)
+                    
+                    if isNetworkError && isProgressDurationExceeded {
+                        Text("\(Errors.networkError.errorDescription)")
+                            .font(.defaultBody)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, 30)
+                    }
+                    Spacer()
+                }
+                .background(Color.backgroundColor)
+                .frame(maxWidth: .infinity)
                 
             } else {
                 VStack(spacing: 0) {
@@ -127,13 +141,18 @@ struct ConverterView: View {
         .padding(20)
         .background(Color.backgroundColor)
         .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {         
+                isProgressDurationExceeded = true
+            }
+            
             viewModel.getExchangeRate(from: convertFrom, to: convertTo) { result in
                 switch result {
                 case .success:
                     print("Success")
                 case .failure(let error):
-                    print("Voici l'erreur weather : \(error)")
-                   // print("Error: \(error.errorDescription)")
+                    if error.errorDescription == Errors.networkError.errorDescription {
+                        isNetworkError = true
+                    }
                 }
             }
         }
