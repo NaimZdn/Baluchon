@@ -18,6 +18,9 @@ struct TranslationView: View {
     
     @State private var previousText = ""
     
+    @State private var isNetworkError = false
+    @State private var error = Errors.networkError.errorDescription
+    
     private var englishId: String {
         isReversed ? "en" : "fr"
     }
@@ -59,14 +62,14 @@ struct TranslationView: View {
                 TranslationTextField(textInput: $textToTranslate, isDisabled: false)
                 
                 if !isDisabled {
-                    TranslationTextField(textInput: $viewModel.translatedText, isDisabled: true)
+                    TranslationTextField(textInput: isNetworkError ? $error : $viewModel.translatedText, isDisabled: true)
                     
                 }
             }
             Spacer()
         }
         .onTapGesture {
-            self.endTextEditing()
+            endTextEditing()
         }
         .onReceive(Just(textToTranslate)) { newValue in
             guard newValue != previousText else {
@@ -78,10 +81,11 @@ struct TranslationView: View {
             viewModel.translateText(newValue, source: isReversed ? "en" : "fr", target: isReversed ? "fr" : "en") { result in
                 switch result {
                 case .success:
-                    print("Coucou")
+                    print("Success")
                 case .failure(let error):
-                    print("Voici l'erreur translation : \(error)")
-                    //print("Error: \(error.errorDescription)")
+                    if error.errorDescription == Errors.networkError.errorDescription {
+                        isNetworkError = true
+                    }
                 }
             }
             

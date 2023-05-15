@@ -10,7 +10,8 @@ import Combine
 
 class TranslationViewModel: ObservableObject {
     @Published var translatedText = ""
-    @Published var isLoading = false
+    @Published var isLoading = true
+    @Published var isFailure = true
     
     private var translationData: TranslationResponse = .init(data: .init(translations: []) )
     private var cancellable: AnyCancellable?
@@ -26,8 +27,7 @@ class TranslationViewModel: ObservableObject {
     }
     
     func translateText(_ text: String, source: String, target: String, apiKeyFileName: String = "Env", completion: @escaping (Result<TranslationResponse, Errors>) -> Void) {
-        
-    isLoading = true
+        isLoading = true
         
         do {
             let apiKey = try getAPIKey(fromFileNamed: apiKeyFileName)
@@ -43,9 +43,7 @@ class TranslationViewModel: ObservableObject {
                 "target": target,
                 "format": "text"
             ]
-            
-            print(text)
-            
+        
             request.httpBody = try? JSONSerialization.data(withJSONObject: parameters)
             
             cancellable = URLSession.shared.dataTaskPublisher(for: request)
@@ -82,14 +80,18 @@ class TranslationViewModel: ObservableObject {
                 }, receiveValue: { response in
                     self.translationData = response
                     self.translatedText = response.data.translations.first?.translatedText ?? ""
+                    
                     self.isLoading = false
+                    self.isFailure = false
+                
+                    completion(.success(self.translationData))
                 })
                
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 if self.requestError != nil {
                     completion(.failure(self.requestError!))
-                } else {
-                    completion(.success(self.translationData))
+                } else if self.isFailure == true {
+                    completion(.failure(Errors.networkError))
                 }
             }
         } catch {
