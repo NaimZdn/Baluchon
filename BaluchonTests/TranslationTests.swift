@@ -66,7 +66,7 @@ class TranslationTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
-    
+      
     func testGivenTranslateText_WhenAPIKeyIsUndefined_ThenPrintingError() {
         let envFile = "Env_test"
         let textToTranslate = "Ceci est un test"
@@ -78,6 +78,38 @@ class TranslationTests: XCTestCase {
             case .failure(let error):
                 XCTAssertEqual(error.errorDescription, "Your APIKey was not found")
             }
+        }
+    }
+    
+    func testGivenTranslateText_WhenConnectionIsCut_ThenPrintingError() {
+        let textToTranslate = "Ceci est un test"
+        
+        translation.translateText(textToTranslate, source: "fr", target: "en")  { result in
+            switch result {
+            case .success(_):
+                print("Success")
+            case .failure(let error):
+                XCTAssertEqual(error.errorDescription, "We can't load data, please check your connection")
+            }
+        }
+    }
+    
+    func testGivenGetExchangeRate_WhenTryingToParseData_ThenReceiveExchangeRate() throws {
+        guard let filePath = Bundle(for: type(of: self)).path(forResource: "TranslationData", ofType: "json") else {
+            XCTFail("JSON file not found.")
+            return
+        }
+        
+        let jsonData = try Data(contentsOf: URL(fileURLWithPath: filePath))
+        
+        do {
+            let decoder = JSONDecoder()
+            let translation = try decoder.decode(TranslationResponse.self, from: jsonData)
+            
+            XCTAssertEqual(translation.data.translations[0].translatedText, "This is a test")
+            
+        } catch {
+            XCTFail("Error parsing JSON: \(error)")
         }
     }
 
