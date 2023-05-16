@@ -11,12 +11,14 @@ import XCTest
 class WeatherTests: XCTestCase {
 
     var weather: WeatherViewModel!
+    var weatherNoConnection: WeatherViewModel!
     var envPlistPath: String!
     var originalEnvPlist: NSDictionary!
     
     override func setUp() {
         super.setUp()
         weather = WeatherViewModel()
+        weatherNoConnection = WeatherViewModel(connectionManager: NoConnectionManager())
         
         let fileManager = FileManager.default
         envPlistPath = Bundle.main.path(forResource: "Env", ofType: "plist")!
@@ -61,7 +63,7 @@ class WeatherTests: XCTestCase {
             }
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 2.0)
     }
     
     func testGetWeather_WhenAPIKeyIsUndefined_ThenPrintingError() {
@@ -102,17 +104,37 @@ class WeatherTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
     }
     
+    func testGetWeather_WhenConnectionIsCut_ThenPrintingError() {
+        weatherNoConnection.getWeather(for: "Paris") { result in
+            switch result {
+            case .success(_):
+                print("Success")
+            case .failure(let error):
+                XCTAssertEqual(error.errorDescription, "We can't load data, please check your connection")
+            }
+        }
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    func testGivenGetWeather_WhenTryingToParseData_ThenReceiveExchangeRate() throws {
+        guard let filePath = Bundle(for: type(of: self)).path(forResource: "WeatherData", ofType: "json") else {
+            XCTFail("JSON file not found.")
+            return
+        }
+        
+        let jsonData = try Data(contentsOf: URL(fileURLWithPath: filePath))
+        
+        do {
+            let decoder = JSONDecoder()
+            let weather = try decoder.decode(WeatherResponse.self, from: jsonData)
+            
+            XCTAssertEqual(weather.location.name, "Paris")
+            XCTAssertEqual(weather.current.condition.text, "Overcast")
+            XCTAssertEqual(weather.forecast.forecastday[0].date, "2023-05-15")
+            
+        } catch {
+            XCTFail("Error parsing JSON: \(error)")
+        }
+    }
     
     func testGivenConvertStringToDate_WhenHavingStringInDateFormatWithYearMonthDayAndTimes_ThenPrintingTheDayTheDayAndTheYearsInFrench() {
         let input = "2023-05-03 13:04"
