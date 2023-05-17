@@ -23,10 +23,16 @@ class WeatherViewModel: ObservableObject {
     @Published var widgetIcon = ""
     @Published var localTimeForWidget = ""
     
-    @Published var isLoading = false
+    @Published var isLoading = true
+    @Published var isFailure = true
 
     private var cancellable: AnyCancellable?
-    private var requestError: Errors? = nil 
+    private var requestError: Errors? = nil
+    private var connectionManager: ConnectionManager
+    
+    init(connectionManager: ConnectionManager = RealConnectionManager()) {
+        self.connectionManager = connectionManager
+    }
     
     private func getAPIKey(fromFileNamed fileName: String) throws -> String {
         guard let envPath = Bundle.main.path(forResource: fileName, ofType: "plist"),
@@ -94,14 +100,16 @@ class WeatherViewModel: ObservableObject {
                     self.colorMode = self.changeColorMode()
                     
                     completion(.success(response))
+                    self.isLoading = false
+                    self.isFailure = false
                   
                 })
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 if self.requestError != nil {
                     completion(.failure(self.requestError!))
-                } else {
-                    self.isLoading = false
+                } else if self.isFailure == true {
+                    completion(.failure(Errors.networkError))
                 }
             }
         } catch {
