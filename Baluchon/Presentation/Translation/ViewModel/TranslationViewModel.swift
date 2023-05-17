@@ -16,6 +16,12 @@ class TranslationViewModel: ObservableObject {
     private var translationData: TranslationResponse = .init(data: .init(translations: []) )
     private var cancellable: AnyCancellable?
     private var requestError: Errors? = nil
+    private var connectionManager: ConnectionManager
+    
+    init(connectionManager: ConnectionManager = RealConnectionManager()) {
+        self.connectionManager = connectionManager
+    }
+    
     
     private func getAPIKey(fromFileNamed fileName: String) throws -> String {
         guard let envPath = Bundle.main.path(forResource: fileName, ofType: "plist"),
@@ -90,7 +96,7 @@ class TranslationViewModel: ObservableObject {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 if self.requestError != nil {
                     completion(.failure(self.requestError!))
-                } else if self.isFailure == true {
+                } else if self.isFailure {
                     completion(.failure(Errors.networkError))
                 }
             }
