@@ -11,12 +11,14 @@ import XCTest
 class TranslationTests: XCTestCase {
 
     var translation: TranslationViewModel!
+    var translationNoConnection: TranslationViewModel!
     var envPlistPath: String!
     var originalEnvPlist: NSDictionary!
     
     override func setUp() {
         super.setUp()
         translation = TranslationViewModel()
+        translationNoConnection = TranslationViewModel(connectionManager: NoConnectionManager())
         
         let fileManager = FileManager.default
         envPlistPath = Bundle.main.path(forResource: "Env", ofType: "plist")!
@@ -84,7 +86,7 @@ class TranslationTests: XCTestCase {
     func testGivenTranslateText_WhenConnectionIsCut_ThenPrintingError() {
         let textToTranslate = "Ceci est un test"
         
-        translation.translateText(textToTranslate, source: "fr", target: "en")  { result in
+        translationNoConnection.translateText(textToTranslate, source: "fr", target: "en")  { result in
             switch result {
             case .success(_):
                 print("Success")
