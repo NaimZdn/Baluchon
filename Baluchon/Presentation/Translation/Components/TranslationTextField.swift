@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct TranslationTextField: View {
     @ObservedObject var viewModel = TranslationViewModel()
@@ -29,6 +28,7 @@ struct TranslationTextField: View {
                                 endTextEditing()
                                 
                             }
+                            .disableAutocorrection(true)
                             .font(.defaultBody)
                             .focused($nameIsFocused)
                             .toolbar {
@@ -47,26 +47,18 @@ struct TranslationTextField: View {
                                 }
                             }
                     } else {
-                        TextField("Écrivez ou collez votre texte ici...", text: $textInput)
+                        TextEditor(text: $textInput)
+                            .colorMultiply(.clear)
+                        
                             .onTapGesture {
                                 endTextEditing()
                                 
                             }
+                            .disableAutocorrection(true)
                             .disabled(isDisabled)
                             .font(.defaultBody)
                             .focused($nameIsFocused)
-                            .toolbar {
-                                ToolbarItemGroup(placement: .keyboard) {
-                                    Spacer()
-                                    Button {
-                                        nameIsFocused = false
-                                        endTextEditing()
-                                    } label: {
-                                        Image(systemName: "keyboard.chevron.compact.down")
-                                            .foregroundColor(Color.iconColor)
-                                    }
-                                }
-                            }
+                    
                     }
                     
                     if !textInput.isEmpty && !isDisabled {
@@ -154,7 +146,7 @@ struct TranslationTextField_Previews: PreviewProvider {
     @State static var textInput = ""
     
     static var previews: some View {
-        TranslationTextField(textInput: $textInput, isDisabled: true)
+        TranslationTextField(textInput: $textInput, isDisabled: false)
     }
 }
 
