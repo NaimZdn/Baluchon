@@ -100,12 +100,9 @@ struct TranslationView: View {
     }
 }
 
-
-
 struct TranslationView_Previews: PreviewProvider {
     static var previews: some View {
         TranslationView()
-        
         
     }
 }

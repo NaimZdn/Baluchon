@@ -67,8 +67,6 @@ struct ConverterView: View {
                                 
                             }
                         }
-                    
-                    
                     HStack(spacing: 0) {
                         Circle()
                             .foregroundColor(.primaryColor)
@@ -86,8 +84,7 @@ struct ConverterView: View {
                             }
                             
                             convertedAmount = viewModel.calculConvertedAmount(amount: amount, rate: viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]!)
-                            
-                            
+                                
                         } label: {
                             Image(systemName: "arrow.up.arrow.down")
                                 .font(.system(size: 20))
@@ -95,7 +92,6 @@ struct ConverterView: View {
                                 .padding(.horizontal, 5)
                             
                         }
-                        
                         Rectangle()
                             .cornerRadius(10)
                             .frame(maxWidth: .infinity, maxHeight: 2)
@@ -135,7 +131,6 @@ struct ConverterView: View {
                     }       
                 }
                 Spacer()
-                
             }
         }
         .padding(20)
@@ -157,12 +152,11 @@ struct ConverterView: View {
             }
         }
         .onTapGesture {
-            self.endTextEditing()
+            endTextEditing()
         }
     }
 }
 
-@available(iOS 16.0, *)
 struct ConverterView_Previews: PreviewProvider {
     static var previews: some View {
         ConverterView()

@@ -44,15 +44,14 @@ struct WeatherCity: View {
                     }
                     .refreshable {
                         print("Hello")
-                        viewModel.getWeather(for: "\(city)") { result in
-                            switch result {
-                            case .success(let response):
-                                self.viewModel.country = response.location.country
-                            case .failure(let error):
-                                print("Voici l'erreur weather : \(error)")
-                                //print("Error: \(error)")
+                            viewModel.getWeather(for: "\(city)") { result in
+                                switch result {
+                                case .success(let response):
+                                    self.viewModel.country = response.location.country
+                                case .failure(let error):
+                                    print("Voici l'erreur weather : \(error)")
+                                }
                             }
-                        }
                     }
                 }
             }
