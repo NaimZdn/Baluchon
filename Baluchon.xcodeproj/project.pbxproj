@@ -51,6 +51,9 @@
 		08A856FD2A011D0600A1D6DC /* LaunchScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A856FC2A011D0600A1D6DC /* LaunchScreenViewModel.swift */; };
 		08AE5E3529F6B5F8004D45A6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AE5E3429F6B5F8004D45A6 /* Currency.swift */; };
 		08AE5E3829F6EE7C004D45A6 /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AE5E3729F6EE7C004D45A6 /* ConverterViewModel.swift */; };
+		08B1D90E2A1C069500234781 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 08B1D90B2A1C069500234781 /* README.md */; };
+		08B1D90F2A1C069500234781 /* presentation_baluchon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 08B1D90C2A1C069500234781 /* presentation_baluchon.jpg */; };
+		08B1D9102A1C069500234781 /* banner_baluchon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 08B1D90D2A1C069500234781 /* banner_baluchon.svg */; };
 		08E1BC8A2A01840A00B20666 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E1BC892A01840A00B20666 /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +121,9 @@
 		08A856FC2A011D0600A1D6DC /* LaunchScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewModel.swift; sourceTree = "<group>"; };
 		08AE5E3429F6B5F8004D45A6 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		08AE5E3729F6EE7C004D45A6 /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
+		08B1D90B2A1C069500234781 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		08B1D90C2A1C069500234781 /* presentation_baluchon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = presentation_baluchon.jpg; sourceTree = "<group>"; };
+		08B1D90D2A1C069500234781 /* banner_baluchon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = banner_baluchon.svg; sourceTree = "<group>"; };
 		08E1BC892A01840A00B20666 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,9 +194,11 @@
 		087E32BE29DB22A0008ABE98 = {
 			isa = PBXGroup;
 			children = (
+				08B1D90B2A1C069500234781 /* README.md */,
 				087E32C929DB22A0008ABE98 /* Baluchon */,
 				087E32DA29DB22A6008ABE98 /* BaluchonTests */,
 				087E32E429DB22A6008ABE98 /* BaluchonUITests */,
+				08B1D9112A1C06EE00234781 /* README Assets */,
 				087E32C829DB22A0008ABE98 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -456,6 +464,15 @@
 			path = "ViewModel ";
 			sourceTree = "<group>";
 		};
+		08B1D9112A1C06EE00234781 /* README Assets */ = {
+			isa = PBXGroup;
+			children = (
+				08B1D90D2A1C069500234781 /* banner_baluchon.svg */,
+				08B1D90C2A1C069500234781 /* presentation_baluchon.jpg */,
+			);
+			path = "README Assets";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -568,10 +585,13 @@
 			files = (
 				088D513D2A03FE6B00C475A4 /* Env_test.plist in Resources */,
 				08349B8829F5F2EA00AA4C04 /* Env.plist in Resources */,
+				08B1D9102A1C069500234781 /* banner_baluchon.svg in Resources */,
 				0891635B29FFFE03007D9684 /* baluchon.json in Resources */,
+				08B1D90F2A1C069500234781 /* presentation_baluchon.jpg in Resources */,
 				08793AFB29DBFE500024A431 /* Nexa-XBold.ttf in Resources */,
 				087E32D229DB22A5008ABE98 /* Preview Assets.xcassets in Resources */,
 				087E32CF29DB22A5008ABE98 /* Assets.xcassets in Resources */,
+				08B1D90E2A1C069500234781 /* README.md in Resources */,
 				08793AFC29DBFE500024A431 /* Nexa-Bold.ttf in Resources */,
 				08793B0029DC0A520024A431 /* Nexa-Regular.otf in Resources */,
 			);
