@@ -13,6 +13,7 @@ enum Errors : Error {
     case invalidParameters
     case unauthorizedAccess
     case networkError
+    case pasteError
     
     var errorDescription: String {
         switch self {
@@ -26,6 +27,8 @@ enum Errors : Error {
             return "Access denied, please check your API Key"
         case .networkError:
             return "We can't load data, please check your connection"
+        case .pasteError:
+            return "Your clipboard is empty"
         }
     }
 }
