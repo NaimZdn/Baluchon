@@ -49,7 +49,7 @@ class WeatherViewModel: ObservableObject {
         do {
             let apiKey = try getAPIKey(fromFileNamed: apiKeyFileName)
             
-            let url = URL(string: "https://api.weatherapi.com/v1/forecast.json?key=\(apiKey)&q=\(location)&days=7")!
+            let url = URL(string: "https://api.weatherapi.com/v1/forecast.json?key=\(apiKey)&q=\(location)&days=8")!
             var request = URLRequest(url: url)
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "GET"
