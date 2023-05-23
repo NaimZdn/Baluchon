@@ -7,6 +7,7 @@
 import SwiftUI
 import Foundation
 import Combine
+import UIKit
 
 class TranslationViewModel: ObservableObject {
     @Published var translatedText = ""
@@ -18,10 +19,11 @@ class TranslationViewModel: ObservableObject {
     private var requestError: Errors? = nil
     private var connectionManager: ConnectionManager
     
+    var alertMessage = ""
+    
     init(connectionManager: ConnectionManager = RealConnectionManager()) {
         self.connectionManager = connectionManager
     }
-    
     
     private func getAPIKey(fromFileNamed fileName: String) throws -> String {
         guard let envPath = Bundle.main.path(forResource: fileName, ofType: "plist"),
@@ -111,11 +113,28 @@ class TranslationViewModel: ObservableObject {
         return true
     }
     
-    func pasteToClipBoard(text: String) -> String {
+    func pasteToClipBoard() -> String {
         let pasteboard = UIPasteboard.general
         let string = pasteboard.string
-        return string!
         
+        guard string != nil || string == "" else {
+            showAlertMessage(message: Errors.pasteError.errorDescription)
+            return ""
+        }
+        return string!
+    }
+
+    private func showAlertMessage(message: String) {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let viewController = windowScene.windows.first?.rootViewController else {
+                return
+        }
+
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        alertMessage = message
+        
+        viewController.present(alertController, animated: true, completion: nil)
     }
 }
-
