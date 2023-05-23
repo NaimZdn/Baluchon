@@ -27,8 +27,3 @@ class NoConnectionManager: ConnectionManager {
         return isNetworkReachable
     }
 }
-
-
-
-
-

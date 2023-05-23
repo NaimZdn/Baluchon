@@ -86,7 +86,7 @@ struct TranslationTextField: View {
                         HStack() {
                             if !isDisabled && textInput.isEmpty {
                                 Button {
-                                    textInput = viewModel.pasteToClipBoard(text: textInput)
+                                    textInput = viewModel.pasteToClipBoard()
                                     
                                 } label: {
                                     Text("Coller")
@@ -101,7 +101,6 @@ struct TranslationTextField: View {
                                         )
                                 }
                             }
-                            
                             Spacer()
                             HStack(spacing: 15) {
                                 Button {
@@ -149,4 +148,3 @@ struct TranslationTextField_Previews: PreviewProvider {
         TranslationTextField(textInput: $textInput, isDisabled: false)
     }
 }
-

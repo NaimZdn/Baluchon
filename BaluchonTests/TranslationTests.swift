@@ -27,12 +27,12 @@ class TranslationTests: XCTestCase {
     }
     
     override func tearDown() {
-           super.tearDown()
+        super.tearDown()
         
-           let fileManager = FileManager.default
-           try? fileManager.removeItem(atPath: envPlistPath)
-           try? fileManager.moveItem(atPath: envPlistPath + ".backup", toPath: envPlistPath)
-       }
+        let fileManager = FileManager.default
+        try? fileManager.removeItem(atPath: envPlistPath)
+        try? fileManager.moveItem(atPath: envPlistPath + ".backup", toPath: envPlistPath)
+    }
     
     func testGivenTranslateText_WhenHavingAllRightParameters_ThenTranslateTheTextInTargetLanguage() {
         let textToTranslate = "Ceci est un test"
@@ -121,11 +121,20 @@ class TranslationTests: XCTestCase {
         XCTAssertTrue(textCopied == true)
     }
     
-    func testGivenPasteClipboard_WhenUserClickOnPasteButtin_ThenPasteTheCurrentCiploboardToTheTextField() {
+    func testGivenPasteClipboard_WhenUserClickOnPasteButton_ThenPasteTheCurrentCiploboardToTheTextField() {
         var textField = ""
-        textField = translation.pasteToClipBoard(text: "Hello world !")
+        textField = translation.pasteToClipBoard()
         
         XCTAssertTrue(textField == "Hello world !")
     
+    }
+    
+    func testGivenPasteClipboard_WhenUserClickOnPasteButtonAndTheClipboardIsEmpty_ThenDisplayAnAlertMessage() {
+        UIPasteboard.general.items = []
+        
+        _ = translation.pasteToClipBoard()
+        
+        XCTAssertEqual(translation.alertMessage, Errors.pasteError.errorDescription)
+     
     }
 }

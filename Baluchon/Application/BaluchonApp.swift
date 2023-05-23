@@ -17,6 +17,7 @@ struct BaluchonApp: App {
         WindowGroup {
             if isShowingLaunchingScreen {
                 LaunchScreenView()
+                    .preferredColorScheme(theme.isDarkMode ? .dark : .light)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 4.1) {
                             self.isShowingLaunchingScreen = false
