@@ -37,7 +37,7 @@ class Theme: ObservableObject {
     
     init(){
         updateMode()
-        Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
+        Timer.scheduledTimer(withTimeInterval: 3_600, repeats: true) { _ in
             self.updateMode()
         }
     }
