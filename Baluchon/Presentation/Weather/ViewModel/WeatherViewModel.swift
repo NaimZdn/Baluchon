@@ -25,7 +25,7 @@ class WeatherViewModel: ObservableObject {
     
     @Published var isLoading = true
     @Published var isFailure = true
-
+    
     private var cancellable: AnyCancellable?
     private var requestError: Errors? = nil
     private var connectionManager: ConnectionManager
@@ -44,7 +44,7 @@ class WeatherViewModel: ObservableObject {
     }
     
     func getWeather(for location: String, apiKeyFileName: String = "Env", completion: @escaping (Result<WeatherResponse, Errors>) -> Void) {
-      isLoading = true
+        isLoading = true
         
         do {
             let apiKey = try getAPIKey(fromFileNamed: apiKeyFileName)
@@ -102,7 +102,7 @@ class WeatherViewModel: ObservableObject {
                     completion(.success(response))
                     self.isLoading = false
                     self.isFailure = false
-                  
+                    
                 })
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -138,7 +138,7 @@ class WeatherViewModel: ObservableObject {
         }
         
         return dateFormatterOutput.string(from: date!).localizedCapitalized
-
+        
     }
     
     func convertStringToHour(from string: String) -> String {

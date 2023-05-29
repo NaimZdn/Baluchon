@@ -39,7 +39,7 @@ class TranslationViewModel: ObservableObject {
         
         do {
             let apiKey = try getAPIKey(fromFileNamed: apiKeyFileName)
-
+            
             let url = URL(string: "https://translation.googleapis.com/language/translate/v2?key=\(apiKey)")!
             var request = URLRequest(url: url)
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -51,7 +51,7 @@ class TranslationViewModel: ObservableObject {
                 "target": target,
                 "format": "text"
             ]
-        
+            
             request.httpBody = try? JSONSerialization.data(withJSONObject: parameters)
             
             cancellable = URLSession.shared.dataTaskPublisher(for: request)
@@ -91,10 +91,10 @@ class TranslationViewModel: ObservableObject {
                     
                     self.isLoading = false
                     self.isFailure = false
-                
+                    
                     completion(.success(self.translationData))
                 })
-               
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 if self.requestError != nil {
                     completion(.failure(self.requestError!))
@@ -123,13 +123,13 @@ class TranslationViewModel: ObservableObject {
         }
         return string!
     }
-
+    
     private func showAlertMessage(message: String) {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-            let viewController = windowScene.windows.first?.rootViewController else {
-                return
+              let viewController = windowScene.windows.first?.rootViewController else {
+            return
         }
-
+        
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)

@@ -28,7 +28,7 @@ struct ConverterView: View {
     private var convertTo : String {
         isReversed ? Currency.euro.currency: Currency.dollar.currency
     }
-
+    
     var body: some View {
         VStack {
             if viewModel.isLoading {
@@ -84,7 +84,7 @@ struct ConverterView: View {
                             }
                             
                             convertedAmount = viewModel.calculConvertedAmount(amount: amount, rate: viewModel.exchangeRates["\(convertFrom) to \(convertTo)"]!)
-                                
+                            
                         } label: {
                             Image(systemName: "arrow.up.arrow.down")
                                 .font(.system(size: 20))
@@ -128,7 +128,7 @@ struct ConverterView: View {
                             .padding(.vertical, 5)
                             .padding(.bottom, -2)
                             .background(Color.primaryColor, in:RoundedRectangle(cornerRadius: 10, style: .continuous))
-                    }       
+                    }
                 }
                 Spacer()
             }
@@ -136,7 +136,7 @@ struct ConverterView: View {
         .padding(20)
         .background(Color.backgroundColor)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {         
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                 isProgressDurationExceeded = true
             }
             

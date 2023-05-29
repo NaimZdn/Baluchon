@@ -45,6 +45,6 @@ class Theme: ObservableObject {
     private func updateMode() {
         let hour = Calendar.current.component(.hour, from: Date())
         isDarkMode = hour >= 21 || hour < 7
-
+        
     }
 }

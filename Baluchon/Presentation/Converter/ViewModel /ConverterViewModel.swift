@@ -145,4 +145,3 @@ class ConverterViewModel: ObservableObject {
         return formattedInput
     }
 }
-

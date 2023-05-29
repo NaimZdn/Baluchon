@@ -14,7 +14,7 @@ protocol ConnectionManager {
 
 class RealConnectionManager: ConnectionManager {
     var isNetworkReachable: Bool = true
-
+    
     func isConnected() -> Bool {
         return isNetworkReachable
     }
@@ -22,7 +22,7 @@ class RealConnectionManager: ConnectionManager {
 
 class NoConnectionManager: ConnectionManager {
     var isNetworkReachable: Bool = false
-
+    
     func isConnected() -> Bool {
         return isNetworkReachable
     }

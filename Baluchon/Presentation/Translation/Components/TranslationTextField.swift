@@ -58,9 +58,8 @@ struct TranslationTextField: View {
                             .disabled(isDisabled)
                             .font(.defaultBody)
                             .focused($nameIsFocused)
-                    
+                        
                     }
-                    
                     if !textInput.isEmpty && !isDisabled {
                         Button {
                             textInput = ""

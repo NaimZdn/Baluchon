@@ -23,7 +23,7 @@ struct LaunchScreenView: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                 withAnimation {
-                  opacity = 0
+                    opacity = 0
                 }
             }
         }
